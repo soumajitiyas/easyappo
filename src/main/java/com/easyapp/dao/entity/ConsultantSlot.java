@@ -22,7 +22,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tbl_consultant_slots")
-public class ConsultantSlot {
+public class ConsultantSlot extends BaseEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,12 +45,6 @@ public class ConsultantSlot {
 	@Column(name = "slot_status")
 	private String slotStatus;
 	
-	@Column(name = "created_date")
-	private Date createdDate;
-	
-	@Column(name = "last_updated_date")
-	private Date lastUpdatedDate;
-
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="consultant_slot_id")
 	private Appointment appointment;
@@ -139,34 +133,6 @@ public class ConsultantSlot {
 	 */
 	public void setSlotStatus(String slotStatus) {
 		this.slotStatus = slotStatus;
-	}
-
-	/**
-	 * @return the createdDate
-	 */
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	/**
-	 * @param createdDate the createdDate to set
-	 */
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	/**
-	 * @return the lastUpdatedDate
-	 */
-	public Date getLastUpdatedDate() {
-		return lastUpdatedDate;
-	}
-
-	/**
-	 * @param lastUpdatedDate the lastUpdatedDate to set
-	 */
-	public void setLastUpdatedDate(Date lastUpdatedDate) {
-		this.lastUpdatedDate = lastUpdatedDate;
 	}
 
 	/**

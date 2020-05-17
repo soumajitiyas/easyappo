@@ -3,6 +3,7 @@
  */
 package com.easyapp.dao.entity;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -23,7 +24,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_customer_payments")
-public class CustomerPayment {
+public class CustomerPayment extends BaseEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,9 +56,6 @@ public class CustomerPayment {
 	
 	@Column(name = "payment_file_mime_type")
 	private String paymentFileMimeType;
-	
-	@Column(name = "created_date")
-	private Date createdDate;
 
 	/**
 	 * @return the id
@@ -185,19 +183,14 @@ public class CustomerPayment {
 		this.paymentFileMimeType = paymentFileMimeType;
 	}
 
-	/**
-	 * @return the createdDate
-	 */
-	public Date getCreatedDate() {
-		return createdDate;
+	@Override
+	public String toString() {
+		return "CustomerPayment [id=" + id + ", paymentMode=" + paymentMode + ", appointment=" + appointment
+				+ ", transactionNumber=" + transactionNumber + ", transactionDate=" + transactionDate + ", payeeName="
+				+ payeeName + ", payment_file=" + Arrays.toString(payment_file) + ", paymentFileName=" + paymentFileName
+				+ ", paymentFileMimeType=" + paymentFileMimeType + ", getCreatedDate()=" + getCreatedDate()
+				+ ", getCreatedBy()=" + getCreatedBy() + ", getLastUpdatedDate()=" + getLastUpdatedDate()
+				+ ", getLastUpdatedBy()=" + getLastUpdatedBy() + "]";
 	}
-
-	/**
-	 * @param createdDate the createdDate to set
-	 */
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-	
 
 }

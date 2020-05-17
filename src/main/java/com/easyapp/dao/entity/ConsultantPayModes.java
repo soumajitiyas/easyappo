@@ -3,8 +3,6 @@
  */
 package com.easyapp.dao.entity;
 
-import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tbl_consultant_pay_modes")
-public class ConsultantPayModes {
+public class ConsultantPayModes extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -64,9 +62,6 @@ public class ConsultantPayModes {
 	@Column(name = "is_active")
 	private String isActive;
 	
-	@Column(name = "created_date")
-	private Date createdDate;
-
 	/**
 	 * @return the id
 	 */
@@ -235,19 +230,4 @@ public class ConsultantPayModes {
 		this.isActive = isActive;
 	}
 
-	/**
-	 * @return the createdDate
-	 */
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	/**
-	 * @param createdDate the createdDate to set
-	 */
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-	
-	
 }

@@ -3,8 +3,6 @@
  */
 package com.easyapp.dao.entity;
 
-import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +21,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_appointment")
-public class Appointment {
+public class Appointment extends BaseEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,12 +40,6 @@ public class Appointment {
 	@JoinColumn(name = "appointment_status_id")
 	private AppointmentStatus appointmentStatus;
 	
-	@Column(name = "created_date")
-	private Date createdDate;
-	
-	@Column(name = "last_updated_date")
-	private Date lastUpdatedDate;
-
 	/**
 	 * @return the id
 	 */
@@ -103,35 +95,5 @@ public class Appointment {
 	public void setAppointmentStatus(AppointmentStatus appointmentStatus) {
 		this.appointmentStatus = appointmentStatus;
 	}
-
-	/**
-	 * @return the createdDate
-	 */
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	/**
-	 * @param createdDate the createdDate to set
-	 */
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	/**
-	 * @return the lastUpdatedDate
-	 */
-	public Date getLastUpdatedDate() {
-		return lastUpdatedDate;
-	}
-
-	/**
-	 * @param lastUpdatedDate the lastUpdatedDate to set
-	 */
-	public void setLastUpdatedDate(Date lastUpdatedDate) {
-		this.lastUpdatedDate = lastUpdatedDate;
-	}
-	
-	
 
 }

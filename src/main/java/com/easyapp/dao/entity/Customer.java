@@ -3,7 +3,6 @@
  */
 package com.easyapp.dao.entity;
 
-import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -24,7 +23,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tbl_customers")
-public class Customer {
+public class Customer extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,12 +34,6 @@ public class Customer {
 	@JoinColumn(name = "user_details_id")
 	private UserDetails userDetails;
 	
-	@Column(name = "created_date")
-	private Date createdDate;
-	
-	@Column(name = "last_updated_date")
-	private Date lastUpdatedDate;
-
 	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="customer_id")
 	private Set<Appointment> appointments;
@@ -77,34 +70,6 @@ public class Customer {
 	}
 
 	/**
-	 * @return the createdDate
-	 */
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	/**
-	 * @param createdDate the createdDate to set
-	 */
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	/**
-	 * @return the lastUpdatedDate
-	 */
-	public Date getLastUpdatedDate() {
-		return lastUpdatedDate;
-	}
-
-	/**
-	 * @param lastUpdatedDate the lastUpdatedDate to set
-	 */
-	public void setLastUpdatedDate(Date lastUpdatedDate) {
-		this.lastUpdatedDate = lastUpdatedDate;
-	}
-
-	/**
 	 * @return the appointments
 	 */
 	public Set<Appointment> getAppointments() {
@@ -131,6 +96,15 @@ public class Customer {
 	public void setCustomerPayments(Set<CustomerPayment> customerPayments) {
 		this.customerPayments = customerPayments;
 	}
+
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", userDetails=" + userDetails + ", appointments=" + appointments
+				+ ", customerPayments=" + customerPayments + ", getCreatedDate()=" + getCreatedDate()
+				+ ", getCreatedBy()=" + getCreatedBy() + ", getLastUpdatedDate()=" + getLastUpdatedDate()
+				+ ", getLastUpdatedBy()=" + getLastUpdatedBy() + "]";
+	}
+	
 	
 	
 }

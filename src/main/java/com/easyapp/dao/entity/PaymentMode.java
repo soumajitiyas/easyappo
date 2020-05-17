@@ -3,8 +3,6 @@
  */
 package com.easyapp.dao.entity;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tbl_payment_modes_master")
-public class PaymentMode {
+public class PaymentMode extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,12 +26,6 @@ public class PaymentMode {
 	@Column(name = "payment_mode")
 	private String paymentMode;
 	
-	@Column(name = "created_date")
-	private Date createdDate;
-	
-	@Column(name = "last_updated_date")
-	private Date lastUpdatedDate;
-
 	/**
 	 * @return the id
 	 */
@@ -62,33 +54,13 @@ public class PaymentMode {
 		this.paymentMode = paymentMode;
 	}
 
-	/**
-	 * @return the createdDate
-	 */
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	/**
-	 * @param createdDate the createdDate to set
-	 */
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	/**
-	 * @return the lastUpdatedDate
-	 */
-	public Date getLastUpdatedDate() {
-		return lastUpdatedDate;
-	}
-
-	/**
-	 * @param lastUpdatedDate the lastUpdatedDate to set
-	 */
-	public void setLastUpdatedDate(Date lastUpdatedDate) {
-		this.lastUpdatedDate = lastUpdatedDate;
+	@Override
+	public String toString() {
+		return "PaymentMode [id=" + id + ", paymentMode=" + paymentMode + ", getCreatedDate()=" + getCreatedDate()
+				+ ", getCreatedBy()=" + getCreatedBy() + ", getLastUpdatedDate()=" + getLastUpdatedDate()
+				+ ", getLastUpdatedBy()=" + getLastUpdatedBy() + "]";
 	}
 	
 	
+
 }

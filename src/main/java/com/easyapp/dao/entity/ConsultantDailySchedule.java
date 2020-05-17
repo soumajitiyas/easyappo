@@ -23,7 +23,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_consultant_daily_schedule")
-public class ConsultantDailySchedule {
+public class ConsultantDailySchedule extends BaseEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

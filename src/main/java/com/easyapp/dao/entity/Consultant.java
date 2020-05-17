@@ -3,7 +3,6 @@
  */
 package com.easyapp.dao.entity;
 
-import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -24,7 +23,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tbl_consultants")
-public class Consultant {
+public class Consultant extends BaseEntity{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,12 +37,6 @@ public class Consultant {
 	@Column(name = "slot_time")
 	private int slotTime;
 	
-	@Column(name = "created_date")
-	private Date createdDate;
-	
-	@Column(name = "last_updated_date")
-	private Date lastUpdatedDate;
-
 	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="consultant_id")
 	private Set<ConsultantDailySchedule> consultantDailySchedules;
@@ -100,34 +93,6 @@ public class Consultant {
 	 */
 	public void setSlotTime(int slotTime) {
 		this.slotTime = slotTime;
-	}
-
-	/**
-	 * @return the createdDate
-	 */
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	/**
-	 * @param createdDate the createdDate to set
-	 */
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	/**
-	 * @return the lastUpdatedDate
-	 */
-	public Date getLastUpdatedDate() {
-		return lastUpdatedDate;
-	}
-
-	/**
-	 * @param lastUpdatedDate the lastUpdatedDate to set
-	 */
-	public void setLastUpdatedDate(Date lastUpdatedDate) {
-		this.lastUpdatedDate = lastUpdatedDate;
 	}
 
 	/**
