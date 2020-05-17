@@ -3,85 +3,88 @@
  */
 package com.easyapp.dao.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
-/**
- * @author DELL
- *
- */
-@Entity
+
+@MappedSuperclass
 public class BaseEntity {
 
-	@Column(name = "created_date")
-	private Date createdDate;
-	
+	@Id
+	@GeneratedValue
+	private Long id;
+
 	@Column(name = "created_by")
 	private String createdBy;
-	
-	@Column(name = "last_updated_date")
-	private Date lastUpdatedDate;
-	
-	@Column(name = "last_updated_by")
-	private String lastUpdatedBy;
 
-	/**
-	 * @return the createdDate
-	 */
-	public Date getCreatedDate() {
-		return createdDate;
+	@Column(name = "created_at")
+	private LocalDateTime createdAt;
+
+	@Column(name = "updated_by")
+	private String updatedBy;
+
+	@Column(name = "updated_at")
+	private LocalDateTime updatedAt;
+
+	public Long getId() {
+		return id;
 	}
 
-	/**
-	 * @param createdDate the createdDate to set
-	 */
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	/**
-	 * @return the createdBy
-	 */
 	public String getCreatedBy() {
 		return createdBy;
 	}
 
-	/**
-	 * @param createdBy the createdBy to set
-	 */
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
 
-	/**
-	 * @return the lastUpdatedDate
-	 */
-	public Date getLastUpdatedDate() {
-		return lastUpdatedDate;
+	public LocalDateTime getCreatedAt() {
+		return createdAt;
 	}
 
-	/**
-	 * @param lastUpdatedDate the lastUpdatedDate to set
-	 */
-	public void setLastUpdatedDate(Date lastUpdatedDate) {
-		this.lastUpdatedDate = lastUpdatedDate;
+	public void setCreatedAt(LocalDateTime createdAt) {
+		this.createdAt = createdAt;
 	}
 
-	/**
-	 * @return the lastUpdatedBy
-	 */
-	public String getLastUpdatedBy() {
-		return lastUpdatedBy;
+	public String getUpdatedBy() {
+		return updatedBy;
 	}
 
-	/**
-	 * @param lastUpdatedBy the lastUpdatedBy to set
-	 */
-	public void setLastUpdatedBy(String lastUpdatedBy) {
-		this.lastUpdatedBy = lastUpdatedBy;
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
 	}
-	
-	
+
+	public LocalDateTime getUpdatedAt() {
+		return updatedAt;
+	}
+
+	public void setUpdatedAt(LocalDateTime updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+	@PrePersist
+	protected void beforeCreate() {
+		if (getCreatedAt() == null) { setCreatedAt(LocalDateTime.now()); }
+		if (getUpdatedAt() == null) { setUpdatedAt(LocalDateTime.now()); }
+		if (getCreatedBy() == null) { setCreatedBy("EASYAPPO");}
+		if (getUpdatedBy() == null) { setUpdatedBy("EASYAPPO");}
+	}
+
+	@PreUpdate
+	protected void beforeUpdate() {
+		if (getCreatedBy() == null) { setCreatedBy("EASYAPPO");}
+		if (getUpdatedBy() == null) { setUpdatedBy("EASYAPPO");}
+	}
+
+	@Override
+	public String toString() {
+		return "BaseEntity [id=" + id + ", createdBy=" + createdBy + ", createdAt=" + createdAt + ", updatedBy="
+				+ updatedBy + ", updatedAt=" + updatedAt + "]";
+	}
+
 }

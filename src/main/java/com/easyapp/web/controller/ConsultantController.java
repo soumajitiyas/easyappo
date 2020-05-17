@@ -1,12 +1,15 @@
 /**
  * 
  */
-package com.easyapp.controller;
+package com.easyapp.web.controller;
 
 import java.util.List;
 
+import com.easyapp.service.exception.EasyAppoServiceException;
+import com.easyapp.web.controller.response.Response;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,14 +28,14 @@ import com.easyapp.service.ConsultantService;
  *
  */
 @RestController
-@RequestMapping("/easyappy")
+@RequestMapping("/consultants")
 public class ConsultantController {
 	
 	@Autowired
 	ConsultantService consultantService;
 	
-	@GetMapping("/consultants/{email}")
-	public ConsultantBO findConsultantByEmail(@PathVariable String email) {
+	@GetMapping("/{email}")
+	public ResponseEntity<Response<ConsultantBO>> findConsultantByEmail(@PathVariable String email) throws EasyAppoServiceException {
 		
 		Consultant consultant = consultantService.findConsultantByEmail(email);
 		ConsultantBO consultantBO = new ConsultantBO();
@@ -40,13 +43,13 @@ public class ConsultantController {
 		BeanUtils.copyProperties(consultant, consultantBO, "userDetails","consultantDailySchedules","consultantCalendars","consultantPayModes","consultantFees");
 		BeanUtils.copyProperties(consultant.getUserDetails(), userDetailsBO);
 		consultantBO.setUserDetails(userDetailsBO);
-		return consultantBO;
+		return ResponseEntity.ok(new Response<ConsultantBO>(consultantBO));
 	}
 	
-	@PostMapping("/consultants/dailySchedule")
-	public List<ConsultantDailySchedule> saveConsultantDailySchedule(@RequestBody List<ConsultantDailySchedule> consultantDailySchedules) {
+	@PostMapping("/dailySchedule")
+	public ResponseEntity<Response<List<ConsultantDailySchedule>>> saveConsultantDailySchedule(@RequestBody List<ConsultantDailySchedule> consultantDailySchedules) throws EasyAppoServiceException {
 		List<ConsultantDailySchedule> consultantDailySchedules2 = consultantService.saveConsultantDailySchedules(consultantDailySchedules);
-		return consultantDailySchedules2;
+		return null;
 	}
 
 }

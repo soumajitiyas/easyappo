@@ -1,18 +1,18 @@
 /**
  * 
  */
-package com.easyapp.dao;
+package com.easyapp.dao.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.easyapp.dao.entity.Customer;
+import com.easyapp.dao.entity.ConsultantFees;
 
 /**
  * @author DELL
  *
  */
 @Repository
-public interface CustomersRepository extends JpaRepository<Customer, Long>  {
+public interface ConsultantFeesRepository extends JpaRepository<ConsultantFees, Long> {
 
 }

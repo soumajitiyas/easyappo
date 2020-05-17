@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.easyapp.dao;
+package com.easyapp.dao.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
