@@ -9,9 +9,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -25,11 +22,6 @@ import javax.persistence.Table;
 @Table(name = "tbl_consultants")
 public class Consultant extends BaseEntity{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private long id;
-	
 	@OneToOne
 	@JoinColumn(name = "user_details_id")
 	private UserDetails userDetails;
@@ -52,19 +44,6 @@ public class Consultant extends BaseEntity{
 	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="consultant_id")
 	private Set<ConsultantFees> consultantFees;
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	/**
 	 * @return the userDetails

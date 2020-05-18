@@ -3,15 +3,13 @@
  */
 package com.easyapp.dao.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -24,23 +22,18 @@ import javax.persistence.Table;
 @Table(name = "tbl_consultant_slots")
 public class ConsultantSlot extends BaseEntity {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private long id;
-	
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "consultant_id")
 	private Consultant consultant;
 	
 	@Column(name = "slot_date")
-	private Date slotDate;
+	private LocalDateTime slotDate;
 	
 	@Column(name = "slot_start_time")
-	private Date slotStartTime;
+	private LocalTime slotStartTime;
 
 	@Column(name = "slot_end_time")
-	private Date slotEndTime;
+	private LocalTime slotEndTime;
 	
 	@Column(name = "slot_status")
 	private String slotStatus;
@@ -48,19 +41,6 @@ public class ConsultantSlot extends BaseEntity {
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="consultant_slot_id")
 	private Appointment appointment;
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	/**
 	 * @return the consultant
@@ -76,50 +56,47 @@ public class ConsultantSlot extends BaseEntity {
 		this.consultant = consultant;
 	}
 
-	
-
 	/**
 	 * @return the slotDate
 	 */
-	public Date getSlotDate() {
+	public LocalDateTime getSlotDate() {
 		return slotDate;
 	}
 
 	/**
 	 * @param slotDate the slotDate to set
 	 */
-	public void setSlotDate(Date slotDate) {
+	public void setSlotDate(LocalDateTime slotDate) {
 		this.slotDate = slotDate;
 	}
 
 	/**
 	 * @return the slotStartTime
 	 */
-	public Date getSlotStartTime() {
+	public LocalTime getSlotStartTime() {
 		return slotStartTime;
 	}
 
 	/**
 	 * @param slotStartTime the slotStartTime to set
 	 */
-	public void setSlotStartTime(Date slotStartTime) {
+	public void setSlotStartTime(LocalTime slotStartTime) {
 		this.slotStartTime = slotStartTime;
 	}
 
 	/**
 	 * @return the slotEndTime
 	 */
-	public Date getSlotEndTime() {
+	public LocalTime getSlotEndTime() {
 		return slotEndTime;
 	}
 
 	/**
 	 * @param slotEndTime the slotEndTime to set
 	 */
-	public void setSlotEndTime(Date slotEndTime) {
+	public void setSlotEndTime(LocalTime slotEndTime) {
 		this.slotEndTime = slotEndTime;
 	}
-
 
 	/**
 	 * @return the slotStatus

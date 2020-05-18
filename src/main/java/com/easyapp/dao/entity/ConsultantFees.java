@@ -3,15 +3,12 @@
  */
 package com.easyapp.dao.entity;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -24,10 +21,6 @@ import javax.persistence.Table;
 @Table(name = "tbl_consultants_fees")
 public class ConsultantFees extends BaseEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private long id;
 	
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "consultant_id")
@@ -43,24 +36,11 @@ public class ConsultantFees extends BaseEntity {
 	private String feeType;
 	
 	@Column(name = "start_date")
-	private Date startDate;
+	private LocalDateTime startDate;
 	
 	@Column(name = "end_date")
-	private Date endDate;
+	private LocalDateTime endDate;
 	
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	/**
 	 * @return the consultant
@@ -121,28 +101,28 @@ public class ConsultantFees extends BaseEntity {
 	/**
 	 * @return the startDate
 	 */
-	public Date getStartDate() {
+	public LocalDateTime getStartDate() {
 		return startDate;
 	}
 
 	/**
 	 * @param startDate the startDate to set
 	 */
-	public void setStartDate(Date startDate) {
+	public void setStartDate(LocalDateTime startDate) {
 		this.startDate = startDate;
 	}
 
 	/**
 	 * @return the endDate
 	 */
-	public Date getEndDate() {
+	public LocalDateTime getEndDate() {
 		return endDate;
 	}
 
 	/**
 	 * @param endDate the endDate to set
 	 */
-	public void setEndDate(Date endDate) {
+	public void setEndDate(LocalDateTime endDate) {
 		this.endDate = endDate;
 	}
 

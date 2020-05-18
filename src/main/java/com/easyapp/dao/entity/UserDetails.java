@@ -3,11 +3,11 @@
  */
 package com.easyapp.dao.entity;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -18,11 +18,6 @@ import javax.persistence.Table;
 @Table(name = "tbl_user_details")
 public class UserDetails extends BaseEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private long id;
-	
 	@Column(name = "user_type")
 	private String userType;
 	
@@ -35,11 +30,26 @@ public class UserDetails extends BaseEntity {
 	@Column(name = "email")
 	private String email;
 	
+	@Column(name = "date_of_birth")
+	private LocalDateTime dob;
+
+	@Column(name = "time_of_birth")
+	private LocalTime tob;
+	
+	@Column(name = "birth_place")
+	private String birthPlace;
+	
+	@Column(name = "gender")
+	private String gender;
+	
 	@Column(name = "country_code")
 	private String countryCode;
 	
 	@Column(name = "primary_number")
 	private String primaryNumber;
+	
+	@Column(name = "alternate_number_country_code")
+	private String altNumberCountryCode;
 	
 	@Column(name = "alternate_number")
 	private String alternateNumber;
@@ -72,25 +82,12 @@ public class UserDetails extends BaseEntity {
 	private String landmark;
 	
 	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	/**
 	 * @return the userType
 	 */
 	public String getUserType() {
 		return userType;
 	}
+
 
 	/**
 	 * @param userType the userType to set
@@ -99,12 +96,14 @@ public class UserDetails extends BaseEntity {
 		this.userType = userType;
 	}
 
+
 	/**
 	 * @return the firstName
 	 */
 	public String getFirstName() {
 		return firstName;
 	}
+
 
 	/**
 	 * @param firstName the firstName to set
@@ -113,12 +112,14 @@ public class UserDetails extends BaseEntity {
 		this.firstName = firstName;
 	}
 
+
 	/**
 	 * @return the lastName
 	 */
 	public String getLastName() {
 		return lastName;
 	}
+
 
 	/**
 	 * @param lastName the lastName to set
@@ -127,12 +128,14 @@ public class UserDetails extends BaseEntity {
 		this.lastName = lastName;
 	}
 
+
 	/**
 	 * @return the email
 	 */
 	public String getEmail() {
 		return email;
 	}
+
 
 	/**
 	 * @param email the email to set
@@ -141,12 +144,78 @@ public class UserDetails extends BaseEntity {
 		this.email = email;
 	}
 
+
+	/**
+	 * @return the dob
+	 */
+	public LocalDateTime getDob() {
+		return dob;
+	}
+
+
+	/**
+	 * @param dob the dob to set
+	 */
+	public void setDob(LocalDateTime dob) {
+		this.dob = dob;
+	}
+
+
+	/**
+	 * @return the tob
+	 */
+	public LocalTime getTob() {
+		return tob;
+	}
+
+
+	/**
+	 * @param tob the tob to set
+	 */
+	public void setTob(LocalTime tob) {
+		this.tob = tob;
+	}
+
+
+	/**
+	 * @return the birthPlace
+	 */
+	public String getBirthPlace() {
+		return birthPlace;
+	}
+
+
+	/**
+	 * @param birthPlace the birthPlace to set
+	 */
+	public void setBirthPlace(String birthPlace) {
+		this.birthPlace = birthPlace;
+	}
+
+
+	/**
+	 * @return the gender
+	 */
+	public String getGender() {
+		return gender;
+	}
+
+
+	/**
+	 * @param gender the gender to set
+	 */
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+
 	/**
 	 * @return the countryCode
 	 */
 	public String getCountryCode() {
 		return countryCode;
 	}
+
 
 	/**
 	 * @param countryCode the countryCode to set
@@ -155,12 +224,14 @@ public class UserDetails extends BaseEntity {
 		this.countryCode = countryCode;
 	}
 
+
 	/**
 	 * @return the primaryNumber
 	 */
 	public String getPrimaryNumber() {
 		return primaryNumber;
 	}
+
 
 	/**
 	 * @param primaryNumber the primaryNumber to set
@@ -169,12 +240,30 @@ public class UserDetails extends BaseEntity {
 		this.primaryNumber = primaryNumber;
 	}
 
+
+	/**
+	 * @return the altNumberCountryCode
+	 */
+	public String getAltNumberCountryCode() {
+		return altNumberCountryCode;
+	}
+
+
+	/**
+	 * @param altNumberCountryCode the altNumberCountryCode to set
+	 */
+	public void setAltNumberCountryCode(String altNumberCountryCode) {
+		this.altNumberCountryCode = altNumberCountryCode;
+	}
+
+
 	/**
 	 * @return the alternateNumber
 	 */
 	public String getAlternateNumber() {
 		return alternateNumber;
 	}
+
 
 	/**
 	 * @param alternateNumber the alternateNumber to set
@@ -183,12 +272,14 @@ public class UserDetails extends BaseEntity {
 		this.alternateNumber = alternateNumber;
 	}
 
+
 	/**
 	 * @return the isEmailVerified
 	 */
 	public boolean isEmailVerified() {
 		return isEmailVerified;
 	}
+
 
 	/**
 	 * @param isEmailVerified the isEmailVerified to set
@@ -197,12 +288,14 @@ public class UserDetails extends BaseEntity {
 		this.isEmailVerified = isEmailVerified;
 	}
 
+
 	/**
 	 * @return the isPrimaryNumberVerified
 	 */
 	public boolean isPrimaryNumberVerified() {
 		return isPrimaryNumberVerified;
 	}
+
 
 	/**
 	 * @param isPrimaryNumberVerified the isPrimaryNumberVerified to set
@@ -211,12 +304,14 @@ public class UserDetails extends BaseEntity {
 		this.isPrimaryNumberVerified = isPrimaryNumberVerified;
 	}
 
+
 	/**
 	 * @return the isAlternateNumberVerified
 	 */
 	public boolean isAlternateNumberVerified() {
 		return isAlternateNumberVerified;
 	}
+
 
 	/**
 	 * @param isAlternateNumberVerified the isAlternateNumberVerified to set
@@ -225,12 +320,14 @@ public class UserDetails extends BaseEntity {
 		this.isAlternateNumberVerified = isAlternateNumberVerified;
 	}
 
+
 	/**
 	 * @return the address1
 	 */
 	public String getAddress1() {
 		return address1;
 	}
+
 
 	/**
 	 * @param address1 the address1 to set
@@ -239,12 +336,14 @@ public class UserDetails extends BaseEntity {
 		this.address1 = address1;
 	}
 
+
 	/**
 	 * @return the address2
 	 */
 	public String getAddress2() {
 		return address2;
 	}
+
 
 	/**
 	 * @param address2 the address2 to set
@@ -253,12 +352,14 @@ public class UserDetails extends BaseEntity {
 		this.address2 = address2;
 	}
 
+
 	/**
 	 * @return the state
 	 */
 	public String getState() {
 		return state;
 	}
+
 
 	/**
 	 * @param state the state to set
@@ -267,12 +368,14 @@ public class UserDetails extends BaseEntity {
 		this.state = state;
 	}
 
+
 	/**
 	 * @return the city
 	 */
 	public String getCity() {
 		return city;
 	}
+
 
 	/**
 	 * @param city the city to set
@@ -281,12 +384,14 @@ public class UserDetails extends BaseEntity {
 		this.city = city;
 	}
 
+
 	/**
 	 * @return the pincode
 	 */
 	public String getPincode() {
 		return pincode;
 	}
+
 
 	/**
 	 * @param pincode the pincode to set
@@ -295,12 +400,14 @@ public class UserDetails extends BaseEntity {
 		this.pincode = pincode;
 	}
 
+
 	/**
 	 * @return the landmark
 	 */
 	public String getLandmark() {
 		return landmark;
 	}
+
 
 	/**
 	 * @param landmark the landmark to set
@@ -309,18 +416,17 @@ public class UserDetails extends BaseEntity {
 		this.landmark = landmark;
 	}
 
+
 	@Override
 	public String toString() {
-		return "UserDetails [id=" + id + ", userType=" + userType + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", email=" + email + ", countryCode=" + countryCode + ", primaryNumber=" + primaryNumber
-				+ ", alternateNumber=" + alternateNumber + ", isEmailVerified=" + isEmailVerified
+		return "UserDetails [userType=" + userType + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
+				+ email + ", dob=" + dob + ", tob=" + tob + ", birthPlace=" + birthPlace + ", gender=" + gender
+				+ ", countryCode=" + countryCode + ", primaryNumber=" + primaryNumber + ", altNumberCountryCode="
+				+ altNumberCountryCode + ", alternateNumber=" + alternateNumber + ", isEmailVerified=" + isEmailVerified
 				+ ", isPrimaryNumberVerified=" + isPrimaryNumberVerified + ", isAlternateNumberVerified="
 				+ isAlternateNumberVerified + ", address1=" + address1 + ", address2=" + address2 + ", state=" + state
-				+ ", city=" + city + ", pincode=" + pincode + ", landmark=" + landmark + ", getCreatedDate()="
-				+ getCreatedDate() + ", getCreatedBy()=" + getCreatedBy() + ", getLastUpdatedDate()="
-				+ getLastUpdatedDate() + ", getLastUpdatedBy()=" + getLastUpdatedBy() + "]";
+				+ ", city=" + city + ", pincode=" + pincode + ", landmark=" + landmark + "]";
 	}
 
 
-	
 }
