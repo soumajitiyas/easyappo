@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 import com.easyapp.dao.repository.ConsultantCalendarRepository;
 import com.easyapp.dao.repository.ConsultantDailyScheduleRepository;
 import com.easyapp.dao.repository.ConsultantsRepository;
-import com.easyapp.dao.entity.Consultant;
-import com.easyapp.dao.entity.ConsultantSlot;
-import com.easyapp.dao.entity.ConsultantDailySchedule;
+import com.easyapp.dao.entity.ConsultantEntity;
+import com.easyapp.dao.entity.ConsultantSlotEntity;
+import com.easyapp.dao.entity.ConsultantDailyScheduleEntity;
 import com.easyapp.service.ConsultantService;
 
 /**
@@ -34,22 +34,22 @@ public class ConsultantServiceImpl implements ConsultantService {
 	ConsultantCalendarRepository consultantCalendarRepository;
 	
 	@Override
-	public Consultant findConsultantByEmail(String email) {
+	public ConsultantEntity findConsultantByEmail(String email) {
 		return consultantsRepository.findConsultantByEmail(email);
 	}
 	
 	@Override
-	public List<ConsultantDailySchedule> saveConsultantDailySchedules(List<ConsultantDailySchedule> consultantDailySchedules) throws EasyAppoServiceException {
+	public List<ConsultantDailyScheduleEntity> saveConsultantDailySchedules(List<ConsultantDailyScheduleEntity> consultantDailySchedules) throws EasyAppoServiceException {
 		return consultantDailyScheduleRepository.saveAll(consultantDailySchedules);
 	}
 	
 	@Override
-	public List<ConsultantDailySchedule> findDailySchedulesByConsultantId(Long consultantId) throws EasyAppoServiceException{
+	public List<ConsultantDailyScheduleEntity> findDailySchedulesByConsultantId(Long consultantId) throws EasyAppoServiceException{
 		return consultantDailyScheduleRepository.findDailySchedulesByConsultantId(consultantId);
 	}
 	
 	@Override
-	public List<ConsultantSlot> saveAllConsultantCalender(List<ConsultantSlot> consultantCalendars) throws EasyAppoServiceException{
+	public List<ConsultantSlotEntity> saveAllConsultantCalender(List<ConsultantSlotEntity> consultantCalendars) throws EasyAppoServiceException{
 		return consultantCalendarRepository.saveAll(consultantCalendars);
 	}
 

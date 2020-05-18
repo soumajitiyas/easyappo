@@ -22,16 +22,11 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tbl_consultants_fees")
-public class ConsultantFees extends BaseEntity {
+public class ConsultantFeesEntity extends BaseEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private long id;
-	
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "consultant_id")
-	private Consultant consultant;
+	private ConsultantEntity consultant;
 	
 	@Column(name = "customer_count")
 	private int customerCount;
@@ -47,32 +42,18 @@ public class ConsultantFees extends BaseEntity {
 	
 	@Column(name = "end_date")
 	private Date endDate;
-	
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	/**
 	 * @return the consultant
 	 */
-	public Consultant getConsultant() {
+	public ConsultantEntity getConsultant() {
 		return consultant;
 	}
 
 	/**
 	 * @param consultant the consultant to set
 	 */
-	public void setConsultant(Consultant consultant) {
+	public void setConsultant(ConsultantEntity consultant) {
 		this.consultant = consultant;
 	}
 

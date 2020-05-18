@@ -5,8 +5,8 @@ package com.easyapp.service;
 
 import java.util.List;
 
-import com.easyapp.dao.entity.Consultant;
-import com.easyapp.dao.entity.Customer;
+import com.easyapp.dao.entity.ConsultantEntity;
+import com.easyapp.dao.entity.CustomerEntity;
 import com.easyapp.service.exception.EasyAppoServiceException;
 
 /**
@@ -16,9 +16,9 @@ import com.easyapp.service.exception.EasyAppoServiceException;
 
 public interface UserService {
 	
-	public List<Consultant> getAllConsultants() throws EasyAppoServiceException;
+	public List<ConsultantEntity> getAllConsultants() throws EasyAppoServiceException;
 	
-	public List<Customer> getAllCustomers() throws EasyAppoServiceException;
+	public List<CustomerEntity> getAllCustomers() throws EasyAppoServiceException;
 	
 
 }

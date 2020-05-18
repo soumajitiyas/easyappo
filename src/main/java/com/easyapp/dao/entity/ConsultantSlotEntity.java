@@ -22,16 +22,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tbl_consultant_slots")
-public class ConsultantSlot extends BaseEntity {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private long id;
+public class ConsultantSlotEntity extends BaseEntity {
+
 	
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "consultant_id")
-	private Consultant consultant;
+	private ConsultantEntity consultant;
 	
 	@Column(name = "slot_date")
 	private Date slotDate;
@@ -47,32 +43,20 @@ public class ConsultantSlot extends BaseEntity {
 	
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="consultant_slot_id")
-	private Appointment appointment;
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
+	private AppointmentEntity appointment;
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	/**
 	 * @return the consultant
 	 */
-	public Consultant getConsultant() {
+	public ConsultantEntity getConsultant() {
 		return consultant;
 	}
 
 	/**
 	 * @param consultant the consultant to set
 	 */
-	public void setConsultant(Consultant consultant) {
+	public void setConsultant(ConsultantEntity consultant) {
 		this.consultant = consultant;
 	}
 
@@ -138,14 +122,14 @@ public class ConsultantSlot extends BaseEntity {
 	/**
 	 * @return the appointment
 	 */
-	public Appointment getAppointment() {
+	public AppointmentEntity getAppointment() {
 		return appointment;
 	}
 
 	/**
 	 * @param appointment the appointment to set
 	 */
-	public void setAppointment(Appointment appointment) {
+	public void setAppointment(AppointmentEntity appointment) {
 		this.appointment = appointment;
 	}
 

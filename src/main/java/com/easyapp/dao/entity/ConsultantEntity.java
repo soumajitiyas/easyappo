@@ -9,9 +9,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -23,13 +20,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tbl_consultants")
-public class Consultant extends BaseEntity{
+public class ConsultantEntity extends BaseEntity{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private long id;
-	
 	@OneToOne
 	@JoinColumn(name = "user_details_id")
 	private UserDetails userDetails;
@@ -39,32 +31,19 @@ public class Consultant extends BaseEntity{
 	
 	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="consultant_id")
-	private Set<ConsultantDailySchedule> consultantDailySchedules;
+	private Set<ConsultantDailyScheduleEntity> consultantDailySchedules;
 	
 	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="consultant_id")
-	private Set<ConsultantSlot> consultantCalendars;
+	private Set<ConsultantSlotEntity> consultantCalendars;
 	
 	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="consultant_id")
-	private Set<ConsultantPayModes> consultantPayModes;
+	private Set<ConsultantPayModesEntity> consultantPayModes;
 	
 	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="consultant_id")
-	private Set<ConsultantFees> consultantFees;
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
+	private Set<ConsultantFeesEntity> consultantFees;
 
 	/**
 	 * @return the userDetails
@@ -98,56 +77,56 @@ public class Consultant extends BaseEntity{
 	/**
 	 * @return the consultantDailySchedules
 	 */
-	public Set<ConsultantDailySchedule> getConsultantDailySchedules() {
+	public Set<ConsultantDailyScheduleEntity> getConsultantDailySchedules() {
 		return consultantDailySchedules;
 	}
 
 	/**
 	 * @param consultantDailySchedules the consultantDailySchedules to set
 	 */
-	public void setConsultantDailySchedules(Set<ConsultantDailySchedule> consultantDailySchedules) {
+	public void setConsultantDailySchedules(Set<ConsultantDailyScheduleEntity> consultantDailySchedules) {
 		this.consultantDailySchedules = consultantDailySchedules;
 	}
 
 	/**
 	 * @return the consultantCalendars
 	 */
-	public Set<ConsultantSlot> getConsultantCalendars() {
+	public Set<ConsultantSlotEntity> getConsultantCalendars() {
 		return consultantCalendars;
 	}
 
 	/**
 	 * @param consultantCalendars the consultantCalendars to set
 	 */
-	public void setConsultantCalendars(Set<ConsultantSlot> consultantCalendars) {
+	public void setConsultantCalendars(Set<ConsultantSlotEntity> consultantCalendars) {
 		this.consultantCalendars = consultantCalendars;
 	}
 
 	/**
 	 * @return the consultantPayModes
 	 */
-	public Set<ConsultantPayModes> getConsultantPayModes() {
+	public Set<ConsultantPayModesEntity> getConsultantPayModes() {
 		return consultantPayModes;
 	}
 
 	/**
 	 * @param consultantPayModes the consultantPayModes to set
 	 */
-	public void setConsultantPayModes(Set<ConsultantPayModes> consultantPayModes) {
+	public void setConsultantPayModes(Set<ConsultantPayModesEntity> consultantPayModes) {
 		this.consultantPayModes = consultantPayModes;
 	}
 
 	/**
 	 * @return the consultantFees
 	 */
-	public Set<ConsultantFees> getConsultantFees() {
+	public Set<ConsultantFeesEntity> getConsultantFees() {
 		return consultantFees;
 	}
 
 	/**
 	 * @param consultantFees the consultantFees to set
 	 */
-	public void setConsultantFees(Set<ConsultantFees> consultantFees) {
+	public void setConsultantFees(Set<ConsultantFeesEntity> consultantFees) {
 		this.consultantFees = consultantFees;
 	}
 	

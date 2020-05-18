@@ -11,29 +11,11 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "tbl_appointment_status_master")
-public class AppointmentStatus extends BaseEntity{
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private long id;
+public class AppointmentStatusEntity extends BaseEntity{
+
 	
 	@Column(name = "status_desc")
 	private String statusDesc;
-	
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	/**
 	 * @return the statusDesc

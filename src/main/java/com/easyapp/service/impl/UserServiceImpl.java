@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 
 import com.easyapp.dao.repository.ConsultantsRepository;
 import com.easyapp.dao.repository.CustomersRepository;
-import com.easyapp.dao.entity.Consultant;
-import com.easyapp.dao.entity.Customer;
+import com.easyapp.dao.entity.ConsultantEntity;
+import com.easyapp.dao.entity.CustomerEntity;
 import com.easyapp.service.UserService;
 
 /**
@@ -30,12 +30,12 @@ public class UserServiceImpl implements UserService {
 	CustomersRepository customersRepository;
 	
 	@Override
-	public List<Consultant> getAllConsultants() throws EasyAppoServiceException {
+	public List<ConsultantEntity> getAllConsultants() throws EasyAppoServiceException {
 		return consultantsRepository.findAll();
 	}
 
 	@Override
-	public List<Customer> getAllCustomers() throws EasyAppoServiceException {
+	public List<CustomerEntity> getAllCustomers() throws EasyAppoServiceException {
 		return customersRepository.findAll();
 	}
 

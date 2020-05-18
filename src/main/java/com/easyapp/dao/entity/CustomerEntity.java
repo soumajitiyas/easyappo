@@ -6,12 +6,8 @@ package com.easyapp.dao.entity;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -23,37 +19,19 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tbl_customers")
-public class Customer extends BaseEntity {
+public class CustomerEntity extends BaseEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private long id;
-	
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_details_id")
 	private UserDetails userDetails;
 	
 	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="customer_id")
-	private Set<Appointment> appointments;
+	private Set<AppointmentEntity> appointments;
 	
 	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="customer_id")
-	private Set<CustomerPayment> customerPayments;
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
+	private Set<CustomerPaymentEntity> customerPayments;
 
 	/**
 	 * @return the userDetails
@@ -72,39 +50,39 @@ public class Customer extends BaseEntity {
 	/**
 	 * @return the appointments
 	 */
-	public Set<Appointment> getAppointments() {
+	public Set<AppointmentEntity> getAppointments() {
 		return appointments;
 	}
 
 	/**
 	 * @param appointments the appointments to set
 	 */
-	public void setAppointments(Set<Appointment> appointments) {
+	public void setAppointments(Set<AppointmentEntity> appointments) {
 		this.appointments = appointments;
 	}
 
 	/**
 	 * @return the customerPayments
 	 */
-	public Set<CustomerPayment> getCustomerPayments() {
+	public Set<CustomerPaymentEntity> getCustomerPayments() {
 		return customerPayments;
 	}
 
 	/**
 	 * @param customerPayments the customerPayments to set
 	 */
-	public void setCustomerPayments(Set<CustomerPayment> customerPayments) {
+	public void setCustomerPayments(Set<CustomerPaymentEntity> customerPayments) {
 		this.customerPayments = customerPayments;
 	}
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", userDetails=" + userDetails + ", appointments=" + appointments
-				+ ", customerPayments=" + customerPayments + ", getCreatedDate()=" + getCreatedDate()
-				+ ", getCreatedBy()=" + getCreatedBy() + ", getLastUpdatedDate()=" + getLastUpdatedDate()
-				+ ", getLastUpdatedBy()=" + getLastUpdatedBy() + "]";
+		return "CustomerEntity{" +
+				"userDetails=" + userDetails +
+				", appointments=" + appointments +
+				", customerPayments=" + customerPayments +
+				'}';
 	}
-	
-	
-	
+
+
 }

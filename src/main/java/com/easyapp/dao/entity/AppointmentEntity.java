@@ -4,12 +4,8 @@
 package com.easyapp.dao.entity;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -21,78 +17,59 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_appointment")
-public class Appointment extends BaseEntity {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private long id;
+public class AppointmentEntity extends BaseEntity {
 	
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "consultant_calender_id")
-	private ConsultantSlot consultantCalendar;
+	private ConsultantSlotEntity consultantCalendar;
 	
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "customer_id")
-	private Customer customer;
+	private CustomerEntity customer;
 	
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "appointment_status_id")
-	private AppointmentStatus appointmentStatus;
-	
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
+	private AppointmentStatusEntity appointmentStatus;
 
 	/**
 	 * @return the consultantCalendar
 	 */
-	public ConsultantSlot getConsultantCalendar() {
+	public ConsultantSlotEntity getConsultantCalendar() {
 		return consultantCalendar;
 	}
 
 	/**
 	 * @param consultantCalendar the consultantCalendar to set
 	 */
-	public void setConsultantCalendar(ConsultantSlot consultantCalendar) {
+	public void setConsultantCalendar(ConsultantSlotEntity consultantCalendar) {
 		this.consultantCalendar = consultantCalendar;
 	}
 
 	/**
 	 * @return the customer
 	 */
-	public Customer getCustomer() {
+	public CustomerEntity getCustomer() {
 		return customer;
 	}
 
 	/**
 	 * @param customer the customer to set
 	 */
-	public void setCustomer(Customer customer) {
+	public void setCustomer(CustomerEntity customer) {
 		this.customer = customer;
 	}
 
 	/**
 	 * @return the appointmentStatus
 	 */
-	public AppointmentStatus getAppointmentStatus() {
+	public AppointmentStatusEntity getAppointmentStatus() {
 		return appointmentStatus;
 	}
 
 	/**
 	 * @param appointmentStatus the appointmentStatus to set
 	 */
-	public void setAppointmentStatus(AppointmentStatus appointmentStatus) {
+	public void setAppointmentStatus(AppointmentStatusEntity appointmentStatus) {
 		this.appointmentStatus = appointmentStatus;
 	}
 
