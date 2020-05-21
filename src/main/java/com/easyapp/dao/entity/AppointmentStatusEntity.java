@@ -17,8 +17,7 @@ public class AppointmentStatusEntity extends BaseEntity{
 	@Column(name = "status_desc")
 	private String statusDesc;
 
-	/**
-	 * @return the statusDesc
+	/**	 * @return the statusDesc
 	 */
 	public String getStatusDesc() {
 		return statusDesc;

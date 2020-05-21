@@ -3,16 +3,13 @@
  */
 package com.easyapp.dao.entity;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -25,7 +22,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tbl_customer_payments")
 public class CustomerPaymentEntity extends BaseEntity {
-
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "pay_mode_id")
 	private PaymentMode paymentMode;
@@ -38,7 +34,7 @@ public class CustomerPaymentEntity extends BaseEntity {
 	private String transactionNumber;
 	
 	@Column(name = "transaction_date")
-	private Date transactionDate;
+	private LocalDateTime transactionDate;
 	
 	@Column(name = "payee_name")
 	private String payeeName;
@@ -51,7 +47,6 @@ public class CustomerPaymentEntity extends BaseEntity {
 	
 	@Column(name = "payment_file_mime_type")
 	private String paymentFileMimeType;
-
 
 	/**
 	 * @return the paymentMode
@@ -95,17 +90,18 @@ public class CustomerPaymentEntity extends BaseEntity {
 		this.transactionNumber = transactionNumber;
 	}
 
+
 	/**
 	 * @return the transactionDate
 	 */
-	public Date getTransactionDate() {
+	public LocalDateTime getTransactionDate() {
 		return transactionDate;
 	}
 
 	/**
 	 * @param transactionDate the transactionDate to set
 	 */
-	public void setTransactionDate(Date transactionDate) {
+	public void setTransactionDate(LocalDateTime transactionDate) {
 		this.transactionDate = transactionDate;
 	}
 
@@ -175,8 +171,7 @@ public class CustomerPaymentEntity extends BaseEntity {
 				", payeeName='" + payeeName + '\'' +
 				", payment_file=" + Arrays.toString(payment_file) +
 				", paymentFileName='" + paymentFileName + '\'' +
-				", paymentFileMimeType='" + paymentFileMimeType + '\'' +
-				'}';
+				", paymentFileMimeType='" + paymentFileMimeType + '\'' + "]";
 	}
 
 }

@@ -80,9 +80,8 @@ public class CustomerEntity extends BaseEntity {
 		return "CustomerEntity{" +
 				"userDetails=" + userDetails +
 				", appointments=" + appointments +
-				", customerPayments=" + customerPayments +
-				'}';
-	}
+				", customerPayments=" + customerPayments + "]";
+		}
 
 
 }

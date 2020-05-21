@@ -2,12 +2,14 @@ package com.easyapp.dao.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import org.hibernate.annotations.Where;
 
 @Entity(name = "tbl_config")
 public class ConfigEntity {
+
+
 
     @Column(name = "key")
     private String key;

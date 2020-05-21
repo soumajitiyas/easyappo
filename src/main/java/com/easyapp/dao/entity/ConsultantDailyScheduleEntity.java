@@ -3,15 +3,12 @@
  */
 package com.easyapp.dao.entity;
 
-import java.util.Date;
+import java.time.LocalTime;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -26,7 +23,6 @@ import javax.persistence.Table;
 public class ConsultantDailyScheduleEntity extends BaseEntity {
 	
 
-	
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "consultant_id")
 	private ConsultantEntity consultant;
@@ -35,15 +31,16 @@ public class ConsultantDailyScheduleEntity extends BaseEntity {
 	private int dayOfWeek;
 	
 	@Column(name = "start_time")
-	private Date startTime;
+	private LocalTime startTime;
 
 	@Column(name = "end_time")
-	private Date endTime;
+	private LocalTime endTime;
 
 	@Column(name = "status")
 	private String status;
 
 	/**
+
 	 * @return the consultant
 	 */
 	public ConsultantEntity getConsultant() {
@@ -71,31 +68,32 @@ public class ConsultantDailyScheduleEntity extends BaseEntity {
 		this.dayOfWeek = dayOfWeek;
 	}
 
+	
 	/**
 	 * @return the startTime
 	 */
-	public Date getStartTime() {
+	public LocalTime getStartTime() {
 		return startTime;
 	}
 
 	/**
 	 * @param startTime the startTime to set
 	 */
-	public void setStartTime(Date startTime) {
+	public void setStartTime(LocalTime startTime) {
 		this.startTime = startTime;
 	}
 
 	/**
 	 * @return the endTime
 	 */
-	public Date getEndTime() {
+	public LocalTime getEndTime() {
 		return endTime;
 	}
 
 	/**
 	 * @param endTime the endTime to set
 	 */
-	public void setEndTime(Date endTime) {
+	public void setEndTime(LocalTime endTime) {
 		this.endTime = endTime;
 	}
 
