@@ -20,11 +20,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tbl_consultant_slots")
-public class ConsultantSlot extends BaseEntity {
+public class ConsultantSlotEntity extends BaseEntity {
+
 	
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "consultant_id")
-	private Consultant consultant;
+	private ConsultantEntity consultant;
 	
 	@Column(name = "slot_date")
 	private LocalDateTime slotDate;
@@ -40,19 +41,19 @@ public class ConsultantSlot extends BaseEntity {
 	
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="consultant_slot_id")
-	private Appointment appointment;
+	private AppointmentEntity appointment;
 
 	/**
 	 * @return the consultant
 	 */
-	public Consultant getConsultant() {
+	public ConsultantEntity getConsultant() {
 		return consultant;
 	}
 
 	/**
 	 * @param consultant the consultant to set
 	 */
-	public void setConsultant(Consultant consultant) {
+	public void setConsultant(ConsultantEntity consultant) {
 		this.consultant = consultant;
 	}
 
@@ -115,14 +116,14 @@ public class ConsultantSlot extends BaseEntity {
 	/**
 	 * @return the appointment
 	 */
-	public Appointment getAppointment() {
+	public AppointmentEntity getAppointment() {
 		return appointment;
 	}
 
 	/**
 	 * @param appointment the appointment to set
 	 */
-	public void setAppointment(Appointment appointment) {
+	public void setAppointment(AppointmentEntity appointment) {
 		this.appointment = appointment;
 	}
 

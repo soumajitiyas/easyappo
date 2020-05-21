@@ -19,7 +19,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tbl_customers")
-public class Customer extends BaseEntity {
+public class CustomerEntity extends BaseEntity {
 
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_details_id")
@@ -27,11 +27,11 @@ public class Customer extends BaseEntity {
 	
 	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="customer_id")
-	private Set<Appointment> appointments;
+	private Set<AppointmentEntity> appointments;
 	
 	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="customer_id")
-	private Set<CustomerPayment> customerPayments;
+	private Set<CustomerPaymentEntity> customerPayments;
 
 	/**
 	 * @return the userDetails
@@ -50,38 +50,38 @@ public class Customer extends BaseEntity {
 	/**
 	 * @return the appointments
 	 */
-	public Set<Appointment> getAppointments() {
+	public Set<AppointmentEntity> getAppointments() {
 		return appointments;
 	}
 
 	/**
 	 * @param appointments the appointments to set
 	 */
-	public void setAppointments(Set<Appointment> appointments) {
+	public void setAppointments(Set<AppointmentEntity> appointments) {
 		this.appointments = appointments;
 	}
 
 	/**
 	 * @return the customerPayments
 	 */
-	public Set<CustomerPayment> getCustomerPayments() {
+	public Set<CustomerPaymentEntity> getCustomerPayments() {
 		return customerPayments;
 	}
 
 	/**
 	 * @param customerPayments the customerPayments to set
 	 */
-	public void setCustomerPayments(Set<CustomerPayment> customerPayments) {
+	public void setCustomerPayments(Set<CustomerPaymentEntity> customerPayments) {
 		this.customerPayments = customerPayments;
 	}
 
 	@Override
 	public String toString() {
-		return "Customer [userDetails=" + userDetails + ", appointments=" + appointments + ", customerPayments="
-				+ customerPayments + ", getId()=" + getId() + ", getCreatedBy()=" + getCreatedBy() + ", getCreatedAt()="
-				+ getCreatedAt() + ", getUpdatedBy()=" + getUpdatedBy() + ", getUpdatedAt()=" + getUpdatedAt() + "]";
-	}
-	
-	
-	
+		return "CustomerEntity{" +
+				"userDetails=" + userDetails +
+				", appointments=" + appointments +
+				", customerPayments=" + customerPayments + "]";
+		}
+
+
 }

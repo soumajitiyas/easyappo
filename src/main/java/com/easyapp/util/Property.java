@@ -10,12 +10,12 @@ public class Property {
         return configMap.get(key);
     }
 
-    public static Integer getInt(String key) {
+    public static int getInt(String key) throws InvalidPropertyKeyException {
         String val = configMap.get(key);
         if (val != null) {
             return Integer.parseInt(val);
         }
-        return null;
+        throw new InvalidPropertyKeyException(String.format("Key: %s not found", key));
     }
 
     public static void addAll(Map<String, String> configs) {

@@ -11,13 +11,13 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "tbl_appointment_status_master")
-public class AppointmentStatus extends BaseEntity{
+public class AppointmentStatusEntity extends BaseEntity{
+
 	
 	@Column(name = "status_desc")
 	private String statusDesc;
-	
-	/**
-	 * @return the statusDesc
+
+	/**	 * @return the statusDesc
 	 */
 	public String getStatusDesc() {
 		return statusDesc;

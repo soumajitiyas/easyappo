@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.easyapp.bo.ConsultantBO;
 import com.easyapp.bo.UserDetailsBO;
-import com.easyapp.dao.entity.Consultant;
-import com.easyapp.dao.entity.ConsultantDailySchedule;
+import com.easyapp.dao.entity.ConsultantEntity;
+import com.easyapp.dao.entity.ConsultantDailyScheduleEntity;
 import com.easyapp.service.ConsultantService;
 
 /**
@@ -37,7 +37,7 @@ public class ConsultantController {
 	@GetMapping("/{email}")
 	public ResponseEntity<Response<ConsultantBO>> findConsultantByEmail(@PathVariable String email) throws EasyAppoServiceException {
 		
-		Consultant consultant = consultantService.findConsultantByEmail(email);
+		ConsultantEntity consultant = consultantService.findConsultantByEmail(email);
 		ConsultantBO consultantBO = new ConsultantBO();
 		UserDetailsBO userDetailsBO = new UserDetailsBO();
 		BeanUtils.copyProperties(consultant, consultantBO, "userDetails","consultantDailySchedules","consultantCalendars","consultantPayModes","consultantFees");
@@ -47,8 +47,8 @@ public class ConsultantController {
 	}
 	
 	@PostMapping("/dailySchedule")
-	public ResponseEntity<Response<List<ConsultantDailySchedule>>> saveConsultantDailySchedule(@RequestBody List<ConsultantDailySchedule> consultantDailySchedules) throws EasyAppoServiceException {
-		List<ConsultantDailySchedule> consultantDailySchedules2 = consultantService.saveConsultantDailySchedules(consultantDailySchedules);
+	public ResponseEntity<Response<List<ConsultantDailyScheduleEntity>>> saveConsultantDailySchedule(@RequestBody List<ConsultantDailyScheduleEntity> consultantDailySchedules) throws EasyAppoServiceException {
+		List<ConsultantDailyScheduleEntity> consultantDailySchedules2 = consultantService.saveConsultantDailySchedules(consultantDailySchedules);
 		return null;
 	}
 

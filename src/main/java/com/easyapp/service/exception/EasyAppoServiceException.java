@@ -1,35 +1,24 @@
 package com.easyapp.service.exception;
 
-public class EasyAppoServiceException extends Exception{
+import com.easyapp.exception.BaseException;
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 4632412038798953183L;
-    private String errorCode;
-
+public class EasyAppoServiceException extends BaseException {
 
     public EasyAppoServiceException(String message) {
         super(message);
     }
 
     public EasyAppoServiceException(String message, String errorCode) {
+        super(message, errorCode);
+    }
+
+    public EasyAppoServiceException(String message, String errorCode, Throwable ex) {
+        super(message, errorCode);
+        initCause(ex);
+    }
+
+    public EasyAppoServiceException(String message, Throwable ex) {
         super(message);
-        this.errorCode = errorCode;
-    }
-
-
-
-    public String getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(String errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    @Override
-    public String toString() {
-        return "NotificationServiceException [errorCode=" + errorCode + "]";
+        initCause(ex);
     }
 }

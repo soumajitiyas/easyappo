@@ -5,9 +5,9 @@ package com.easyapp.service;
 
 import java.util.List;
 
-import com.easyapp.dao.entity.Consultant;
-import com.easyapp.dao.entity.ConsultantSlot;
-import com.easyapp.dao.entity.ConsultantDailySchedule;
+import com.easyapp.dao.entity.ConsultantEntity;
+import com.easyapp.dao.entity.ConsultantSlotEntity;
+import com.easyapp.dao.entity.ConsultantDailyScheduleEntity;
 import com.easyapp.service.exception.EasyAppoServiceException;
 
 /**
@@ -20,24 +20,24 @@ public interface ConsultantService {
 	 * @param email
 	 * @return
 	 */
-	Consultant findConsultantByEmail(String email) throws EasyAppoServiceException;
+	ConsultantEntity findConsultantByEmail(String email) throws EasyAppoServiceException;
 	
 	/**
 	 * @param consultantCalendars
 	 * @return
 	 */
-	List<ConsultantSlot> saveAllConsultantCalender(List<ConsultantSlot> consultantCalendars) throws EasyAppoServiceException;
+	List<ConsultantSlotEntity> saveAllConsultantCalender(List<ConsultantSlotEntity> consultantCalendars) throws EasyAppoServiceException;
 
 	/**
 	 * @param consultantId
 	 * @return
 	 */
-	List<ConsultantDailySchedule> findDailySchedulesByConsultantId(Long consultantId) throws EasyAppoServiceException;
+	List<ConsultantDailyScheduleEntity> findDailySchedulesByConsultantId(Long consultantId) throws EasyAppoServiceException;
 
 	/**
 	 * @param consultantDailySchedules
 	 * @return
 	 */
-	List<ConsultantDailySchedule> saveConsultantDailySchedules(List<ConsultantDailySchedule> consultantDailySchedules) throws EasyAppoServiceException;
+	List<ConsultantDailyScheduleEntity> saveConsultantDailySchedules(List<ConsultantDailyScheduleEntity> consultantDailySchedules) throws EasyAppoServiceException;
 
 }

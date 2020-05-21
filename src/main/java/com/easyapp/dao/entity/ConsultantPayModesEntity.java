@@ -17,12 +17,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tbl_consultant_pay_modes")
-public class ConsultantPayModes extends BaseEntity {
+public class ConsultantPayModesEntity extends BaseEntity {
 
-	
-	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+
+		@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "consultant_id")
-	private Consultant consultant;
+	private ConsultantEntity consultant;
 	
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "payment_mode_id")
@@ -54,19 +54,19 @@ public class ConsultantPayModes extends BaseEntity {
 	
 	@Column(name = "is_active")
 	private String isActive;
-	
 
+	
 	/**
 	 * @return the consultant
 	 */
-	public Consultant getConsultant() {
+	public ConsultantEntity getConsultant() {
 		return consultant;
 	}
 
 	/**
 	 * @param consultant the consultant to set
 	 */
-	public void setConsultant(Consultant consultant) {
+	public void setConsultant(ConsultantEntity consultant) {
 		this.consultant = consultant;
 	}
 

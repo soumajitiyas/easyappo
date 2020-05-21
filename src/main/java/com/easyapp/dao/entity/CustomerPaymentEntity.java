@@ -21,15 +21,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_customer_payments")
-public class CustomerPayment extends BaseEntity {
-	
+public class CustomerPaymentEntity extends BaseEntity {
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "pay_mode_id")
 	private PaymentMode paymentMode;
 	
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "appointment_id")
-	private Appointment appointment;
+	private AppointmentEntity appointment;
 	
 	@Column(name = "transaction_number")
 	private String transactionNumber;
@@ -66,14 +65,14 @@ public class CustomerPayment extends BaseEntity {
 	/**
 	 * @return the appointment
 	 */
-	public Appointment getAppointment() {
+	public AppointmentEntity getAppointment() {
 		return appointment;
 	}
 
 	/**
 	 * @param appointment the appointment to set
 	 */
-	public void setAppointment(Appointment appointment) {
+	public void setAppointment(AppointmentEntity appointment) {
 		this.appointment = appointment;
 	}
 
@@ -164,10 +163,15 @@ public class CustomerPayment extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "CustomerPayment [paymentMode=" + paymentMode + ", appointment=" + appointment + ", transactionNumber="
-				+ transactionNumber + ", transactionDate=" + transactionDate + ", payeeName=" + payeeName
-				+ ", payment_file=" + Arrays.toString(payment_file) + ", paymentFileName=" + paymentFileName
-				+ ", paymentFileMimeType=" + paymentFileMimeType + "]";
+		return "CustomerPaymentEntity{" +
+				"paymentMode=" + paymentMode +
+				", appointment=" + appointment +
+				", transactionNumber='" + transactionNumber + '\'' +
+				", transactionDate=" + transactionDate +
+				", payeeName='" + payeeName + '\'' +
+				", payment_file=" + Arrays.toString(payment_file) +
+				", paymentFileName='" + paymentFileName + '\'' +
+				", paymentFileMimeType='" + paymentFileMimeType + '\'' + "]";
 	}
 
 }

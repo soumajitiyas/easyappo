@@ -19,12 +19,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "tbl_consultants_fees")
-public class ConsultantFees extends BaseEntity {
+public class ConsultantFeesEntity extends BaseEntity {
 
-	
+
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "consultant_id")
-	private Consultant consultant;
+	private ConsultantEntity consultant;
 	
 	@Column(name = "customer_count")
 	private int customerCount;
@@ -40,19 +40,19 @@ public class ConsultantFees extends BaseEntity {
 	
 	@Column(name = "end_date")
 	private LocalDateTime endDate;
-	
 
+	
 	/**
 	 * @return the consultant
 	 */
-	public Consultant getConsultant() {
+	public ConsultantEntity getConsultant() {
 		return consultant;
 	}
 
 	/**
 	 * @param consultant the consultant to set
 	 */
-	public void setConsultant(Consultant consultant) {
+	public void setConsultant(ConsultantEntity consultant) {
 		this.consultant = consultant;
 	}
 

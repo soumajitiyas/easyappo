@@ -9,9 +9,8 @@ import javax.persistence.Id;
 @Entity(name = "tbl_config")
 public class ConfigEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+
+
     @Column(name = "key")
     private String key;
     @Column(name = "type")
@@ -43,20 +42,10 @@ public class ConfigEntity {
         this.value = value;
     }
 
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     @Override
     public String toString() {
         return "ConfigEntity{" +
-                "id=" + id +
-                ", key='" + key + '\'' +
+                "key='" + key + '\'' +
                 ", type='" + type + '\'' +
                 ", value='" + value + '\'' +
                 '}';
