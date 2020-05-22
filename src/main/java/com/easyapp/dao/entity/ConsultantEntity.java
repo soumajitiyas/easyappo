@@ -7,11 +7,14 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -19,15 +22,22 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "tbl_consultants")
-public class ConsultantEntity extends BaseEntity{
+@Table(name = "tbl_consultant")
+@PrimaryKeyJoinColumn(name = "user_id")
+@DiscriminatorValue("CONSULTANT")
+public class ConsultantEntity extends UserEntity{
 
-	@OneToOne
-	@JoinColumn(name = "user_details_id")
-	private UserDetails userDetails;
+	@Column(name = "status")
+	private String status;
 	
+	@Column(name = "year_of_experience")
+	private int yearOfExperience;
+		
 	@Column(name = "slot_time")
 	private int slotTime;
+	
+	@Column(name = "fee_amount")
+	private double feeAmount;
 	
 	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="consultant_id")
@@ -35,31 +45,15 @@ public class ConsultantEntity extends BaseEntity{
 	
 	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="consultant_id")
-	private Set<ConsultantSlotEntity> consultantCalendars;
+	private Set<ConsultantUnavailableSlotEntity> consultantSlots;
 	
-	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
-	@JoinColumn(name="consultant_id")
-	private Set<ConsultantPayModesEntity> consultantPayModes;
-	
-	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
-	@JoinColumn(name="consultant_id")
-	private Set<ConsultantFeesEntity> consultantFees;
-
-	/**
-	 * @return the userDetails
-	 */
-	public UserDetails getUserDetails() {
-		return userDetails;
-	}
-
-	/**
-	 * @param userDetails the userDetails to set
-	 */
-	public void setUserDetails(UserDetails userDetails) {
-		this.userDetails = userDetails;
-	}
-
-	
+	@ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+        name = "tbl_consultant_client", 
+        joinColumns = { @JoinColumn(name = "consultant_id") }, 
+        inverseJoinColumns = { @JoinColumn(name = "client_id") }
+    )
+	private Set<ClientEntity> clients;
 	/**
 	 * @return the slotTime
 	 */
@@ -89,47 +83,61 @@ public class ConsultantEntity extends BaseEntity{
 	}
 
 	/**
-	 * @return the consultantCalendars
+	 * @return the status
 	 */
-	public Set<ConsultantSlotEntity> getConsultantCalendars() {
-		return consultantCalendars;
+	public String getStatus() {
+		return status;
 	}
 
 	/**
-	 * @param consultantCalendars the consultantCalendars to set
+	 * @param status the status to set
 	 */
-	public void setConsultantCalendars(Set<ConsultantSlotEntity> consultantCalendars) {
-		this.consultantCalendars = consultantCalendars;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	/**
-	 * @return the consultantPayModes
+	 * @return the yearOfExperience
 	 */
-	public Set<ConsultantPayModesEntity> getConsultantPayModes() {
-		return consultantPayModes;
+	public int getYearOfExperience() {
+		return yearOfExperience;
 	}
 
 	/**
-	 * @param consultantPayModes the consultantPayModes to set
+	 * @param yearOfExperience the yearOfExperience to set
 	 */
-	public void setConsultantPayModes(Set<ConsultantPayModesEntity> consultantPayModes) {
-		this.consultantPayModes = consultantPayModes;
+	public void setYearOfExperience(int yearOfExperience) {
+		this.yearOfExperience = yearOfExperience;
 	}
 
 	/**
-	 * @return the consultantFees
+	 * @return the feeAmount
 	 */
-	public Set<ConsultantFeesEntity> getConsultantFees() {
-		return consultantFees;
+	public double getFeeAmount() {
+		return feeAmount;
 	}
 
 	/**
-	 * @param consultantFees the consultantFees to set
+	 * @param feeAmount the feeAmount to set
 	 */
-	public void setConsultantFees(Set<ConsultantFeesEntity> consultantFees) {
-		this.consultantFees = consultantFees;
+	public void setFeeAmount(double feeAmount) {
+		this.feeAmount = feeAmount;
 	}
-	
-	
+
+	/**
+	 * @return the consultantSlots
+	 */
+	public Set<ConsultantUnavailableSlotEntity> getConsultantSlots() {
+		return consultantSlots;
+	}
+
+	/**
+	 * @param consultantSlots the consultantSlots to set
+	 */
+	public void setConsultantSlots(Set<ConsultantUnavailableSlotEntity> consultantSlots) {
+		this.consultantSlots = consultantSlots;
+	}
+
+	 
 	
 }

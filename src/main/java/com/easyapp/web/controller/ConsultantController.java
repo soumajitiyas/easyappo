@@ -37,11 +37,10 @@ public class ConsultantController {
 	@GetMapping("/{email}")
 	public ResponseEntity<Response<ConsultantBO>> findConsultantByEmail(@PathVariable String email) throws EasyAppoServiceException {
 		
-		ConsultantEntity consultant = consultantService.findConsultantByEmail(email);
+		ConsultantEntity consultant = new ConsultantEntity();
 		ConsultantBO consultantBO = new ConsultantBO();
 		UserDetailsBO userDetailsBO = new UserDetailsBO();
 		BeanUtils.copyProperties(consultant, consultantBO, "userDetails","consultantDailySchedules","consultantCalendars","consultantPayModes","consultantFees");
-		BeanUtils.copyProperties(consultant.getUserDetails(), userDetailsBO);
 		consultantBO.setUserDetails(userDetailsBO);
 		return ResponseEntity.ok(new Response<ConsultantBO>(consultantBO));
 	}

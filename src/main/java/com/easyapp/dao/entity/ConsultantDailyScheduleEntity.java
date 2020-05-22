@@ -36,9 +36,6 @@ public class ConsultantDailyScheduleEntity extends BaseEntity {
 	@Column(name = "end_time")
 	private LocalTime endTime;
 
-	@Column(name = "status")
-	private String status;
-
 	/**
 
 	 * @return the consultant
@@ -97,20 +94,11 @@ public class ConsultantDailyScheduleEntity extends BaseEntity {
 		this.endTime = endTime;
 	}
 
-	/**
-	 * @return the status
-	 */
-	public String getStatus() {
-		return status;
+	@Override
+	public String toString() {
+		return "ConsultantDailyScheduleEntity [consultant=" + consultant + ", dayOfWeek=" + dayOfWeek + ", startTime="
+				+ startTime + ", endTime=" + endTime + "]";
 	}
 
-	/**
-	 * @param status the status to set
-	 */
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	
-	
 	
 }

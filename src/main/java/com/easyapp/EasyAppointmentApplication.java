@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.easyapp.dao.entity.UserDetails;
+import com.easyapp.dao.entity.UserEntity;
 import com.easyapp.service.UserService;
 import com.easyapp.service.impl.UserServiceImpl;
 import org.springframework.context.event.ContextRefreshedEvent;

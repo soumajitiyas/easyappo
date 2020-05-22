@@ -18,7 +18,7 @@ import com.easyapp.dao.entity.ConsultantDailyScheduleEntity;
 @Repository
 public interface ConsultantDailyScheduleRepository extends JpaRepository<ConsultantDailyScheduleEntity, Long> {
 	
-	@Query("SELECT cds FROM ConsultantDailySchedule cds WHERE cds.consultant = ?1")
+	@Query("SELECT cds FROM ConsultantDailyScheduleEntity cds WHERE cds.consultant = ?1")
 	List<ConsultantDailyScheduleEntity> findDailySchedulesByConsultantId(Long consultantId);
 
 }

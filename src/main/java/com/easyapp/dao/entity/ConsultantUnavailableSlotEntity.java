@@ -19,8 +19,8 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "tbl_consultant_slots")
-public class ConsultantSlotEntity extends BaseEntity {
+@Table(name = "tbl_consultant_unavailable_slot")
+public class ConsultantUnavailableSlotEntity extends BaseEntity {
 
 	
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
@@ -35,9 +35,6 @@ public class ConsultantSlotEntity extends BaseEntity {
 
 	@Column(name = "slot_end_time")
 	private LocalTime slotEndTime;
-	
-	@Column(name = "slot_status")
-	private String slotStatus;
 	
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="consultant_slot_id")
@@ -97,20 +94,6 @@ public class ConsultantSlotEntity extends BaseEntity {
 	 */
 	public void setSlotEndTime(LocalTime slotEndTime) {
 		this.slotEndTime = slotEndTime;
-	}
-
-	/**
-	 * @return the slotStatus
-	 */
-	public String getSlotStatus() {
-		return slotStatus;
-	}
-
-	/**
-	 * @param slotStatus the slotStatus to set
-	 */
-	public void setSlotStatus(String slotStatus) {
-		this.slotStatus = slotStatus;
 	}
 
 	/**

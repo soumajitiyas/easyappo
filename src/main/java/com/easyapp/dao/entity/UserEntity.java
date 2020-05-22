@@ -4,10 +4,13 @@
 package com.easyapp.dao.entity;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 /**
@@ -15,29 +18,26 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "tbl_user_details")
-public class UserDetails extends BaseEntity {
+@Table(name = "tbl_user")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name="type",
+        discriminatorType = DiscriminatorType.STRING)
+public class UserEntity extends BaseEntity {
 
-	@Column(name = "user_type")
-	private String userType;
-	
 	@Column(name = "first_name")
 	private String firstName;
 	
 	@Column(name = "last_name")
 	private String lastName;
 	
-	@Column(name = "email")
-	private String email;
+	@Column(name = "type")
+	private String type;
 	
 	@Column(name = "date_of_birth")
-	private LocalDateTime dob;
-
-	@Column(name = "time_of_birth")
-	private LocalTime tob;
+	private LocalDateTime dateOfBirth;
 	
-	@Column(name = "birth_place")
-	private String birthPlace;
+	@Column(name = "email")
+	private String email;
 	
 	@Column(name = "gender")
 	private String gender;
@@ -57,12 +57,6 @@ public class UserDetails extends BaseEntity {
 	@Column(name = "is_email_verified")
 	private boolean isEmailVerified;
 	
-	@Column(name = "is_primary_number_verified")
-	private boolean isPrimaryNumberVerified;
-	
-	@Column(name = "is_alternate_number_verified")
-	private boolean isAlternateNumberVerified;
-	
 	@Column(name = "address1")
 	private String address1;
 	
@@ -80,20 +74,36 @@ public class UserDetails extends BaseEntity {
 	
 	@Column(name = "landmark")
 	private String landmark;
-	
+
 	/**
-	 * @return the userType
+	 * @return the type
 	 */
-	public String getUserType() {
-		return userType;
+	public String getType() {
+		return type;
 	}
 
 
 	/**
-	 * @param userType the userType to set
+	 * @param type the type to set
 	 */
-	public void setUserType(String userType) {
-		this.userType = userType;
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
+	/**
+	 * @return the dateOfBirth
+	 */
+	public LocalDateTime getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+
+	/**
+	 * @param dateOfBirth the dateOfBirth to set
+	 */
+	public void setDateOfBirth(LocalDateTime dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 
@@ -142,54 +152,6 @@ public class UserDetails extends BaseEntity {
 	 */
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-
-	/**
-	 * @return the dob
-	 */
-	public LocalDateTime getDob() {
-		return dob;
-	}
-
-
-	/**
-	 * @param dob the dob to set
-	 */
-	public void setDob(LocalDateTime dob) {
-		this.dob = dob;
-	}
-
-
-	/**
-	 * @return the tob
-	 */
-	public LocalTime getTob() {
-		return tob;
-	}
-
-
-	/**
-	 * @param tob the tob to set
-	 */
-	public void setTob(LocalTime tob) {
-		this.tob = tob;
-	}
-
-
-	/**
-	 * @return the birthPlace
-	 */
-	public String getBirthPlace() {
-		return birthPlace;
-	}
-
-
-	/**
-	 * @param birthPlace the birthPlace to set
-	 */
-	public void setBirthPlace(String birthPlace) {
-		this.birthPlace = birthPlace;
 	}
 
 
@@ -287,39 +249,6 @@ public class UserDetails extends BaseEntity {
 	public void setEmailVerified(boolean isEmailVerified) {
 		this.isEmailVerified = isEmailVerified;
 	}
-
-
-	/**
-	 * @return the isPrimaryNumberVerified
-	 */
-	public boolean isPrimaryNumberVerified() {
-		return isPrimaryNumberVerified;
-	}
-
-
-	/**
-	 * @param isPrimaryNumberVerified the isPrimaryNumberVerified to set
-	 */
-	public void setPrimaryNumberVerified(boolean isPrimaryNumberVerified) {
-		this.isPrimaryNumberVerified = isPrimaryNumberVerified;
-	}
-
-
-	/**
-	 * @return the isAlternateNumberVerified
-	 */
-	public boolean isAlternateNumberVerified() {
-		return isAlternateNumberVerified;
-	}
-
-
-	/**
-	 * @param isAlternateNumberVerified the isAlternateNumberVerified to set
-	 */
-	public void setAlternateNumberVerified(boolean isAlternateNumberVerified) {
-		this.isAlternateNumberVerified = isAlternateNumberVerified;
-	}
-
 
 	/**
 	 * @return the address1
@@ -419,14 +348,12 @@ public class UserDetails extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "UserDetails [userType=" + userType + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
-				+ email + ", dob=" + dob + ", tob=" + tob + ", birthPlace=" + birthPlace + ", gender=" + gender
-				+ ", countryCode=" + countryCode + ", primaryNumber=" + primaryNumber + ", altNumberCountryCode="
-				+ altNumberCountryCode + ", alternateNumber=" + alternateNumber + ", isEmailVerified=" + isEmailVerified
-				+ ", isPrimaryNumberVerified=" + isPrimaryNumberVerified + ", isAlternateNumberVerified="
-				+ isAlternateNumberVerified + ", address1=" + address1 + ", address2=" + address2 + ", state=" + state
-				+ ", city=" + city + ", pincode=" + pincode + ", landmark=" + landmark + "]";
+		return "UserEntity [firstName=" + firstName + ", lastName=" + lastName + ", type=" + type + ", dateOfBirth="
+				+ dateOfBirth + ", email=" + email + ", gender=" + gender + ", countryCode=" + countryCode
+				+ ", primaryNumber=" + primaryNumber + ", altNumberCountryCode=" + altNumberCountryCode
+				+ ", alternateNumber=" + alternateNumber + ", isEmailVerified=" + isEmailVerified + ", address1="
+				+ address1 + ", address2=" + address2 + ", state=" + state + ", city=" + city + ", pincode=" + pincode
+				+ ", landmark=" + landmark + "]";
 	}
-
 
 }
