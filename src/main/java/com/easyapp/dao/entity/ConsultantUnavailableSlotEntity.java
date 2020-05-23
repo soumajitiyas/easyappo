@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @Table(name = "tbl_consultant_unavailable_slot")
 public class ConsultantUnavailableSlotEntity extends BaseEntity {
 
-	
+	//TODO <Comment> ManyToOne remove cascade
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "consultant_id")
 	private ConsultantEntity consultant;
@@ -35,7 +35,9 @@ public class ConsultantUnavailableSlotEntity extends BaseEntity {
 
 	@Column(name = "slot_end_time")
 	private LocalTime slotEndTime;
-	
+
+
+	//TODO <Comment> This should be removed
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="consultant_slot_id")
 	private AppointmentEntity appointment;

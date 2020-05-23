@@ -18,7 +18,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tbl_appointment_summary")
 public class AppointmentSummaryEntity extends BaseEntity{
-	
+
+	//TODO <COMMENT> Same as AppointmentEntity
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "appointment_id")
 	private AppointmentEntity appointment;

@@ -32,7 +32,9 @@ public class ClientEntity extends UserEntity {
 	
 	@Column(name = "place_of_birth")
 	private String placeOfBirth;
-	
+
+	//TODO <Comment> as discussed lets remove client will always exists before, in our application
+	//only place where we need cascade is UserEntity
 	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name="client_id")
 	private Set<AppointmentEntity> appointments;

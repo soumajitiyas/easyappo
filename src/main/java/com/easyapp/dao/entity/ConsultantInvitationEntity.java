@@ -19,7 +19,7 @@ import javax.persistence.Table;
 @Table(name = "tbl_consultant_invitation")
 public class ConsultantInvitationEntity extends BaseEntity {
 
-	
+	//TODO <Comment> ManyToOne, remove cascade
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "consultant_id")
 	private ConsultantEntity consultant;

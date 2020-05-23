@@ -18,6 +18,7 @@ import javax.persistence.Table;
 @Table(name = "tbl_consultant_client")
 public class ConsultantClientEntity extends BaseEntity {
 
+	//TODO <Comment> this entity is not required
 	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name = "consultant_id")
 	private ConsultantEntity consultant;
