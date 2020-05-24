@@ -24,16 +24,14 @@ public class UserController {
 	
 	@GetMapping("/consultants")
 	public String getAllConsultants() throws EasyAppoServiceException {
-		System.out.println(userService.getAllConsultants().get(0).getUserDetails().getFirstName());
 		System.out.println("done");
-		return userService.getAllConsultants().get(0).getUserDetails().getFirstName();
+		return "";
 	}
 	
 	@GetMapping("/customers")
 	public String getAllCustomers() throws EasyAppoServiceException {
-		System.out.println(userService.getAllCustomers().get(0).getUserDetails().getFirstName());
 		System.out.println("done");
-		return userService.getAllCustomers().get(0).getUserDetails().getFirstName();
+		return "";
 	}
 	
 }

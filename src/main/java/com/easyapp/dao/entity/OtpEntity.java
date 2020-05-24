@@ -10,13 +10,13 @@ public class OtpEntity extends BaseEntity{
     @Column(name = "otp")
     private String otp;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "customer_id", referencedColumnName = "id")
-    private CustomerEntity customer;
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private UserEntity user;
     @Column(name = "context")
     private String context;
-    @Column
+    @Column(name = "status")
     private String status;
-    @Column
+    @Column(name = "retryCount")
     private int retryCount;
 
     public String getReferenceId() {
@@ -35,15 +35,21 @@ public class OtpEntity extends BaseEntity{
         this.otp = otp;
     }
 
-    public CustomerEntity getCustomer() {
-        return customer;
-    }
+    /**
+	 * @return the user
+	 */
+	public UserEntity getUser() {
+		return user;
+	}
 
-    public void setCustomer(CustomerEntity customer) {
-        this.customer = customer;
-    }
+	/**
+	 * @param user the user to set
+	 */
+	public void setUser(UserEntity user) {
+		this.user = user;
+	}
 
-    public String getContext() {
+	public String getContext() {
         return context;
     }
 
@@ -51,6 +57,7 @@ public class OtpEntity extends BaseEntity{
         this.context = context;
     }
 
+    
     public String getStatus() {
         return status;
     }
@@ -72,7 +79,7 @@ public class OtpEntity extends BaseEntity{
         return "OtpEntity{" +
                 "referenceId='" + referenceId + '\'' +
                 ", otp='" + otp + '\'' +
-                ", customer=" + customer +
+                ", user=" + user +
                 ", context='" + context + '\'' +
                 ", status='" + status + '\'' +
                 ", retryCount=" + retryCount +

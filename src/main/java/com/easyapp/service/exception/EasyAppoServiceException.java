@@ -4,7 +4,12 @@ import com.easyapp.exception.BaseException;
 
 public class EasyAppoServiceException extends BaseException {
 
-    public EasyAppoServiceException(String message) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6869915091060018022L;
+
+	public EasyAppoServiceException(String message) {
         super(message);
     }
 

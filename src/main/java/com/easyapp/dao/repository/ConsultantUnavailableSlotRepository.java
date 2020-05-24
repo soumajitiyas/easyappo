@@ -6,13 +6,13 @@ package com.easyapp.dao.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.easyapp.dao.entity.ConsultantSlotEntity;
+import com.easyapp.dao.entity.ConsultantUnavailableSlotEntity;
 
 /**
  * @author DELL
  *
  */
 @Repository
-public interface ConsultantCalendarRepository extends JpaRepository<ConsultantSlotEntity, Long> {
+public interface ConsultantUnavailableSlotRepository extends JpaRepository<ConsultantUnavailableSlotEntity, Long> {
 
 }

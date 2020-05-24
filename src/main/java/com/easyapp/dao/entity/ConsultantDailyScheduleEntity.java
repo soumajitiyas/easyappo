@@ -5,12 +5,11 @@ package com.easyapp.dao.entity;
 
 import java.time.LocalTime;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -22,8 +21,7 @@ import javax.persistence.Table;
 @Table(name = "tbl_consultant_daily_schedule")
 public class ConsultantDailyScheduleEntity extends BaseEntity {
 	
-
-	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "consultant_id")
 	private ConsultantEntity consultant;
 	
@@ -35,9 +33,6 @@ public class ConsultantDailyScheduleEntity extends BaseEntity {
 
 	@Column(name = "end_time")
 	private LocalTime endTime;
-
-	@Column(name = "status")
-	private String status;
 
 	/**
 
@@ -97,20 +92,11 @@ public class ConsultantDailyScheduleEntity extends BaseEntity {
 		this.endTime = endTime;
 	}
 
-	/**
-	 * @return the status
-	 */
-	public String getStatus() {
-		return status;
+	@Override
+	public String toString() {
+		return "ConsultantDailyScheduleEntity [consultant=" + consultant + ", dayOfWeek=" + dayOfWeek + ", startTime="
+				+ startTime + ", endTime=" + endTime + "]";
 	}
 
-	/**
-	 * @param status the status to set
-	 */
-	public void setStatus(String status) {
-		this.status = status;
-	}
-	
-	
 	
 }

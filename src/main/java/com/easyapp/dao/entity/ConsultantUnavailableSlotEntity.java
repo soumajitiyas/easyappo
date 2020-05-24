@@ -6,11 +6,11 @@ package com.easyapp.dao.entity;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,11 +19,10 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "tbl_consultant_slots")
-public class ConsultantSlotEntity extends BaseEntity {
+@Table(name = "tbl_consultant_unavailable_slot")
+public class ConsultantUnavailableSlotEntity extends BaseEntity {
 
-	
-	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "consultant_id")
 	private ConsultantEntity consultant;
 	
@@ -35,14 +34,10 @@ public class ConsultantSlotEntity extends BaseEntity {
 
 	@Column(name = "slot_end_time")
 	private LocalTime slotEndTime;
-	
-	@Column(name = "slot_status")
-	private String slotStatus;
-	
-	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
-	@JoinColumn(name="consultant_slot_id")
-	private AppointmentEntity appointment;
 
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="consultant_slot_id")
+	ConsultantOfflineAppointment consultantOfflineAppointment;
 	/**
 	 * @return the consultant
 	 */
@@ -100,32 +95,17 @@ public class ConsultantSlotEntity extends BaseEntity {
 	}
 
 	/**
-	 * @return the slotStatus
+	 * @return the consultantOfflineAppointment
 	 */
-	public String getSlotStatus() {
-		return slotStatus;
+	public ConsultantOfflineAppointment getConsultantOfflineAppointment() {
+		return consultantOfflineAppointment;
 	}
 
 	/**
-	 * @param slotStatus the slotStatus to set
+	 * @param consultantOfflineAppointment the consultantOfflineAppointment to set
 	 */
-	public void setSlotStatus(String slotStatus) {
-		this.slotStatus = slotStatus;
+	public void setConsultantOfflineAppointment(ConsultantOfflineAppointment consultantOfflineAppointment) {
+		this.consultantOfflineAppointment = consultantOfflineAppointment;
 	}
 
-	/**
-	 * @return the appointment
-	 */
-	public AppointmentEntity getAppointment() {
-		return appointment;
-	}
-
-	/**
-	 * @param appointment the appointment to set
-	 */
-	public void setAppointment(AppointmentEntity appointment) {
-		this.appointment = appointment;
-	}
-
-	
 }

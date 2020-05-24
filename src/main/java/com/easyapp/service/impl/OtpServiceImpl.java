@@ -1,8 +1,8 @@
 package com.easyapp.service.impl;
 
-import com.easyapp.dao.entity.CustomerEntity;
+import com.easyapp.dao.entity.ClientEntity;
 import com.easyapp.dao.entity.OtpEntity;
-import com.easyapp.dao.repository.CustomersRepository;
+import com.easyapp.dao.repository.ClientRepository;
 import com.easyapp.dao.repository.OtpRepository;
 import com.easyapp.service.OtpService;
 import com.easyapp.service.exception.EasyAppoServiceException;
@@ -20,11 +20,11 @@ public class OtpServiceImpl implements OtpService {
     OtpRepository otpRepository;
 
     @Autowired
-    CustomersRepository customersRepository;
+    ClientRepository customersRepository;
 
     @Override
     public String sendOtp(String context, long customerId, String[] channels) throws EasyAppoServiceException {
-        Optional<CustomerEntity> customerEntity = customersRepository.findById(customerId);
+        Optional<ClientEntity> customerEntity = customersRepository.findById(customerId);
         if (customerEntity.isPresent()) {
             OtpEntity otpEntity = new OtpEntity();
             otpEntity.setContext(context);
