@@ -6,11 +6,11 @@ package com.easyapp.dao.entity;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,8 +22,7 @@ import javax.persistence.Table;
 @Table(name = "tbl_consultant_unavailable_slot")
 public class ConsultantUnavailableSlotEntity extends BaseEntity {
 
-	//TODO <Comment> ManyToOne remove cascade
-	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "consultant_id")
 	private ConsultantEntity consultant;
 	
@@ -36,12 +35,9 @@ public class ConsultantUnavailableSlotEntity extends BaseEntity {
 	@Column(name = "slot_end_time")
 	private LocalTime slotEndTime;
 
-
-	//TODO <Comment> This should be removed
-	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="consultant_slot_id")
-	private AppointmentEntity appointment;
-
+	ConsultantOfflineAppointment consultantOfflineAppointment;
 	/**
 	 * @return the consultant
 	 */
@@ -99,18 +95,17 @@ public class ConsultantUnavailableSlotEntity extends BaseEntity {
 	}
 
 	/**
-	 * @return the appointment
+	 * @return the consultantOfflineAppointment
 	 */
-	public AppointmentEntity getAppointment() {
-		return appointment;
+	public ConsultantOfflineAppointment getConsultantOfflineAppointment() {
+		return consultantOfflineAppointment;
 	}
 
 	/**
-	 * @param appointment the appointment to set
+	 * @param consultantOfflineAppointment the consultantOfflineAppointment to set
 	 */
-	public void setAppointment(AppointmentEntity appointment) {
-		this.appointment = appointment;
+	public void setConsultantOfflineAppointment(ConsultantOfflineAppointment consultantOfflineAppointment) {
+		this.consultantOfflineAppointment = consultantOfflineAppointment;
 	}
 
-	
 }

@@ -5,7 +5,6 @@ package com.easyapp.dao.entity;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -39,15 +38,15 @@ public class ConsultantEntity extends UserEntity{
 	@Column(name = "fee_amount")
 	private double feeAmount;
 	
-	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name="consultant_id")
 	private Set<ConsultantDailyScheduleEntity> consultantDailySchedules;
 	
-	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name="consultant_id")
-	private Set<ConsultantUnavailableSlotEntity> consultantSlots;
+	private Set<ConsultantUnavailableSlotEntity> consultantUnvailableSlots;
 	
-	@ManyToMany(cascade = { CascadeType.ALL })
+	@ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "tbl_consultant_client", 
         joinColumns = { @JoinColumn(name = "consultant_id") }, 
@@ -125,19 +124,31 @@ public class ConsultantEntity extends UserEntity{
 	}
 
 	/**
-	 * @return the consultantSlots
+	 * @return the consultantUnvailableSlots
 	 */
-	public Set<ConsultantUnavailableSlotEntity> getConsultantSlots() {
-		return consultantSlots;
+	public Set<ConsultantUnavailableSlotEntity> getConsultantUnvailableSlots() {
+		return consultantUnvailableSlots;
 	}
 
 	/**
-	 * @param consultantSlots the consultantSlots to set
+	 * @param consultantUnvailableSlots the consultantUnvailableSlots to set
 	 */
-	public void setConsultantSlots(Set<ConsultantUnavailableSlotEntity> consultantSlots) {
-		this.consultantSlots = consultantSlots;
+	public void setConsultantUnvailableSlots(Set<ConsultantUnavailableSlotEntity> consultantUnvailableSlots) {
+		this.consultantUnvailableSlots = consultantUnvailableSlots;
 	}
 
-	 
-	
+	/**
+	 * @return the clients
+	 */
+	public Set<ClientEntity> getClients() {
+		return clients;
+	}
+
+	/**
+	 * @param clients the clients to set
+	 */
+	public void setClients(Set<ClientEntity> clients) {
+		this.clients = clients;
+	}
+
 }

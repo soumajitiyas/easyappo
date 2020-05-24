@@ -5,12 +5,11 @@ package com.easyapp.dao.entity;
 
 import java.time.LocalTime;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -22,8 +21,7 @@ import javax.persistence.Table;
 @Table(name = "tbl_consultant_daily_schedule")
 public class ConsultantDailyScheduleEntity extends BaseEntity {
 	
-	//TODO should be ManyToOne remove cascade
-	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "consultant_id")
 	private ConsultantEntity consultant;
 	

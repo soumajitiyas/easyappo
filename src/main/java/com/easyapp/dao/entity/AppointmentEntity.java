@@ -6,11 +6,11 @@ package com.easyapp.dao.entity;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,17 +23,11 @@ import javax.persistence.Table;
 @Table(name = "tbl_appointment")
 public class AppointmentEntity extends BaseEntity {
 
-
-	//TODO <COMMENT> This should be ManyToOne as there can be many Appointment against a consultant
-	//Cascade ALL is not required as there will be no instance when a change in Appointment will have impact on consultant
-	//Generally Parent ide will have the cascade All.
-	//Lets not use Cascade type all any where, use PERSIST and REFRESH
-	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "consultant_id")
 	private ConsultantEntity consultant;
 
-	//TODO <COMMENT> same as above
-	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "client_id")
 	private ClientEntity client;
 	
@@ -49,13 +43,11 @@ public class AppointmentEntity extends BaseEntity {
 	@Column(name = "status")
 	private String status;
 
-	//TODO <COMMENT> remove cascade type, change fetch type to EAGER
-	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "new_appointment_id")
 	private AppointmentEntity newAppointment;
 
-	//TODO <COMMENT> change cascade type to PERSIST and REFRESH
-	@OneToOne(cascade=CascadeType.ALL,fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "appointment_id")
 	private AppointmentSummaryEntity appointmentSummary;
 
