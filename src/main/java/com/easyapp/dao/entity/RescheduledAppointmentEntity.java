@@ -32,6 +32,9 @@ public class RescheduledAppointmentEntity extends BaseEntity{
 	@Column(name = "rescheduled_by")
 	private String rescheduledBy;
 
+	@Column(name = "count")
+	private int count;
+
 	/**
 	 * @return the newAppointment
 	 */
@@ -93,7 +96,5 @@ public class RescheduledAppointmentEntity extends BaseEntity{
 		return "RescheduledAppointmentEntity [newAppointment=" + newAppointment + ", oldAppointment=" + oldAppointment
 				+ ", rescheduleReason=" + rescheduleReason + ", rescheduledBy=" + rescheduledBy + "]";
 	}
-	
-	
 	
 }

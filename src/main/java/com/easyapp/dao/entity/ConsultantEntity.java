@@ -26,6 +26,9 @@ import javax.persistence.Table;
 @DiscriminatorValue("CONSULTANT")
 public class ConsultantEntity extends UserEntity{
 
+	@Column(name = "user_id", insertable = false, updatable = false)
+	private Long userId;
+
 	@Column(name = "status")
 	private String status;
 	
@@ -38,13 +41,11 @@ public class ConsultantEntity extends UserEntity{
 	@Column(name = "fee_amount")
 	private double feeAmount;
 	
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name="consultant_id")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "consultant")
 	private Set<ConsultantDailyScheduleEntity> consultantDailySchedules;
 	
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name="consultant_id")
-	private Set<ConsultantUnavailableSlotEntity> consultantUnvailableSlots;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "consultant")
+	private Set<ConsultantUnavailableSlotEntity> consultantUnAvailableSlots;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -126,15 +127,15 @@ public class ConsultantEntity extends UserEntity{
 	/**
 	 * @return the consultantUnvailableSlots
 	 */
-	public Set<ConsultantUnavailableSlotEntity> getConsultantUnvailableSlots() {
-		return consultantUnvailableSlots;
+	public Set<ConsultantUnavailableSlotEntity> getConsultantUnAvailableSlots() {
+		return consultantUnAvailableSlots;
 	}
 
 	/**
-	 * @param consultantUnvailableSlots the consultantUnvailableSlots to set
+	 * @param consultantUnAvailableSlots the consultantUnvailableSlots to set
 	 */
-	public void setConsultantUnvailableSlots(Set<ConsultantUnavailableSlotEntity> consultantUnvailableSlots) {
-		this.consultantUnvailableSlots = consultantUnvailableSlots;
+	public void setConsultantUnAvailableSlots(Set<ConsultantUnavailableSlotEntity> consultantUnAvailableSlots) {
+		this.consultantUnAvailableSlots = consultantUnAvailableSlots;
 	}
 
 	/**
@@ -150,5 +151,15 @@ public class ConsultantEntity extends UserEntity{
 	public void setClients(Set<ClientEntity> clients) {
 		this.clients = clients;
 	}
+
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
 
 }

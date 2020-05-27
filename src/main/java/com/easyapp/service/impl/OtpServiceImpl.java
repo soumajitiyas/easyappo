@@ -2,15 +2,16 @@ package com.easyapp.service.impl;
 
 import com.easyapp.dao.entity.ClientEntity;
 import com.easyapp.dao.entity.OtpEntity;
+import com.easyapp.dao.entity.UserEntity;
 import com.easyapp.dao.repository.ClientRepository;
 import com.easyapp.dao.repository.OtpRepository;
+import com.easyapp.dao.repository.UserRepository;
 import com.easyapp.service.OtpService;
 import com.easyapp.service.exception.EasyAppoServiceException;
 import com.easyapp.util.InvalidPropertyKeyException;
 import com.easyapp.util.Property;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 import java.util.Random;
 
@@ -20,12 +21,12 @@ public class OtpServiceImpl implements OtpService {
     OtpRepository otpRepository;
 
     @Autowired
-    ClientRepository customersRepository;
+    UserRepository clientRepository;
 
     @Override
-    public String sendOtp(String context, long customerId, String[] channels) throws EasyAppoServiceException {
-        Optional<ClientEntity> customerEntity = customersRepository.findById(customerId);
-        if (customerEntity.isPresent()) {
+    public String sendOtp(String context, long clientId, String[] channels) throws EasyAppoServiceException {
+        Optional<UserEntity> userEntity = clientRepository.findById(clientId);
+        if (userEntity.isPresent()) {
             OtpEntity otpEntity = new OtpEntity();
             otpEntity.setContext(context);
             //TODO Generate reference id
@@ -37,7 +38,7 @@ public class OtpServiceImpl implements OtpService {
             //TODO Call notification Service to send
             return referenceId;
         }
-        throw new EasyAppoServiceException(String.format("Invalid customer id: %s", customerEntity));
+        throw new EasyAppoServiceException(String.format("Invalid customer id: %s", userEntity));
     }
 
     @Override
@@ -57,8 +58,7 @@ public class OtpServiceImpl implements OtpService {
             return builder.toString();
         } catch (InvalidPropertyKeyException e) {
             e.printStackTrace();
-            EasyAppoServiceException ex = new EasyAppoServiceException("Exception occued while generating OTP", e);
-            throw ex;
+            throw new EasyAppoServiceException("Exception occued while generating OTP", e);
         }
     }
 }

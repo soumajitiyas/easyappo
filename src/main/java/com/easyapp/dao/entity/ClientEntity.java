@@ -26,16 +26,18 @@ import javax.persistence.Table;
 @DiscriminatorValue("CLIENT")
 public class ClientEntity extends UserEntity {
 
+	@Column(name = "user_id", insertable = false, updatable = false)
+	private Long userId;
+
 	@Column(name = "time_of_birth")
 	private LocalTime timeOfBirth;
 	
 	@Column(name = "place_of_birth")
 	private String placeOfBirth;
 
-	@OneToMany(fetch = FetchType.LAZY)
-	@JoinColumn(name="client_id")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
 	private Set<AppointmentEntity> appointments;
-	
+
 	@ManyToMany(mappedBy = "clients")
 	private Set<ConsultantEntity> consultants;
 
@@ -95,6 +97,14 @@ public class ClientEntity extends UserEntity {
 	 */
 	public void setConsultants(Set<ConsultantEntity> consultants) {
 		this.consultants = consultants;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	@Override

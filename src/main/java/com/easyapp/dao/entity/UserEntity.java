@@ -30,7 +30,7 @@ public class UserEntity extends BaseEntity {
 	@Column(name = "last_name")
 	private String lastName;
 	
-	@Column(name = "type")
+	@Column(name = "type", insertable = false, updatable = false)
 	private String type;
 	
 	@Column(name = "date_of_birth")

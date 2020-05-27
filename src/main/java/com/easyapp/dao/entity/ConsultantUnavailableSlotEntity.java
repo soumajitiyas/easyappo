@@ -35,9 +35,6 @@ public class ConsultantUnavailableSlotEntity extends BaseEntity {
 	@Column(name = "slot_end_time")
 	private LocalTime slotEndTime;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="consultant_slot_id")
-	ConsultantOfflineAppointment consultantOfflineAppointment;
 	/**
 	 * @return the consultant
 	 */
@@ -92,20 +89,6 @@ public class ConsultantUnavailableSlotEntity extends BaseEntity {
 	 */
 	public void setSlotEndTime(LocalTime slotEndTime) {
 		this.slotEndTime = slotEndTime;
-	}
-
-	/**
-	 * @return the consultantOfflineAppointment
-	 */
-	public ConsultantOfflineAppointment getConsultantOfflineAppointment() {
-		return consultantOfflineAppointment;
-	}
-
-	/**
-	 * @param consultantOfflineAppointment the consultantOfflineAppointment to set
-	 */
-	public void setConsultantOfflineAppointment(ConsultantOfflineAppointment consultantOfflineAppointment) {
-		this.consultantOfflineAppointment = consultantOfflineAppointment;
 	}
 
 }
