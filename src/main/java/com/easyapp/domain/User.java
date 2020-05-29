@@ -1,14 +1,23 @@
 package com.easyapp.domain;
 
 import com.easyapp.dao.entity.UserEntity;
+import com.easyapp.dao.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 
+
+@Domain
 public class User {
-    private UserEntity user;
+
+    @Autowired
+    UserRepository userRepository;
+
+    private UserEntity userEntity;
+
 
     public String getType() {
-        return user.getType();
+        return userEntity.getType();
     }
 
 
@@ -16,7 +25,7 @@ public class User {
      * @param type the type to set
      */
     public void setType(String type) {
-        this.user.setType(type);
+        this.userEntity.setType(type);
     }
 
 
@@ -24,7 +33,7 @@ public class User {
      * @return the dateOfBirth
      */
     public LocalDateTime getDateOfBirth() {
-        return user.getDateOfBirth();
+        return userEntity.getDateOfBirth();
     }
 
 
@@ -32,7 +41,7 @@ public class User {
      * @param dateOfBirth the dateOfBirth to set
      */
     public void setDateOfBirth(LocalDateTime dateOfBirth) {
-        user.setDateOfBirth(dateOfBirth);
+        userEntity.setDateOfBirth(dateOfBirth);
     }
 
 
@@ -40,7 +49,7 @@ public class User {
      * @return the firstName
      */
     public String getFirstName() {
-        return this.user.getFirstName();
+        return this.userEntity.getFirstName();
     }
 
 
@@ -48,7 +57,7 @@ public class User {
      * @param firstName the firstName to set
      */
     public void setFirstName(String firstName) {
-        this.user.setFirstName(firstName);
+        this.userEntity.setFirstName(firstName);
     }
 
 
@@ -56,7 +65,7 @@ public class User {
      * @return the lastName
      */
     public String getLastName() {
-        return this.user.getLastName();
+        return this.userEntity.getLastName();
     }
 
 
@@ -64,7 +73,7 @@ public class User {
      * @param lastName the lastName to set
      */
     public void setLastName(String lastName) {
-        this.user.setLastName(lastName);
+        this.userEntity.setLastName(lastName);
     }
 
 
@@ -72,7 +81,7 @@ public class User {
      * @return the email
      */
     public String getEmail() {
-        return this.user.getEmail();
+        return this.userEntity.getEmail();
     }
 
 
@@ -80,7 +89,7 @@ public class User {
      * @param email the email to set
      */
     public void setEmail(String email) {
-        this.user.setEmail(email);
+        this.userEntity.setEmail(email);
     }
 
 
@@ -96,7 +105,7 @@ public class User {
      * @param gender the gender to set
      */
     public void setGender(String gender) {
-        this.user.setGender(gender);
+        this.userEntity.setGender(gender);
     }
 
 
@@ -104,7 +113,7 @@ public class User {
      * @return the countryCode
      */
     public String getCountryCode() {
-        return this.user.getCountryCode();
+        return this.userEntity.getCountryCode();
     }
 
 
@@ -112,7 +121,7 @@ public class User {
      * @param countryCode the countryCode to set
      */
     public void setCountryCode(String countryCode) {
-        this.user.setCountryCode(countryCode);
+        this.userEntity.setCountryCode(countryCode);
     }
 
 
@@ -120,7 +129,7 @@ public class User {
      * @return the primaryNumber
      */
     public String getPrimaryNumber() {
-        return this.user.getPrimaryNumber();
+        return this.userEntity.getPrimaryNumber();
     }
 
 
@@ -128,7 +137,7 @@ public class User {
      * @param primaryNumber the primaryNumber to set
      */
     public void setPrimaryNumber(String primaryNumber) {
-        this.user.setPrimaryNumber(primaryNumber);
+        this.userEntity.setPrimaryNumber(primaryNumber);
     }
 
 
@@ -136,7 +145,7 @@ public class User {
      * @return the altNumberCountryCode
      */
     public String getAltNumberCountryCode() {
-        return this.user.getAltNumberCountryCode();
+        return this.userEntity.getAltNumberCountryCode();
     }
 
 
@@ -144,7 +153,7 @@ public class User {
      * @param altNumberCountryCode the altNumberCountryCode to set
      */
     public void setAltNumberCountryCode(String altNumberCountryCode) {
-        this.user.setAltNumberCountryCode(altNumberCountryCode);
+        this.userEntity.setAltNumberCountryCode(altNumberCountryCode);
     }
 
 
@@ -152,7 +161,7 @@ public class User {
      * @return the alternateNumber
      */
     public String getAlternateNumber() {
-        return this.user.getAlternateNumber();
+        return this.userEntity.getAlternateNumber();
     }
 
 
@@ -160,7 +169,7 @@ public class User {
      * @param alternateNumber the alternateNumber to set
      */
     public void setAlternateNumber(String alternateNumber) {
-        this.user.setAlternateNumber(alternateNumber);
+        this.userEntity.setAlternateNumber(alternateNumber);
     }
 
 
@@ -168,7 +177,7 @@ public class User {
      * @return the isEmailVerified
      */
     public boolean isEmailVerified() {
-        return this.user.isEmailVerified();
+        return this.userEntity.isEmailVerified();
     }
 
 
@@ -176,14 +185,14 @@ public class User {
      * @param isEmailVerified the isEmailVerified to set
      */
     public void setEmailVerified(boolean isEmailVerified) {
-        this.user.setEmailVerified(isEmailVerified);
+        this.userEntity.setEmailVerified(isEmailVerified);
     }
 
     /**
      * @return the address1
      */
     public String getAddress1() {
-        return this.user.getAddress1();
+        return this.userEntity.getAddress1();
     }
 
 
@@ -191,7 +200,7 @@ public class User {
      * @param address1 the address1 to set
      */
     public void setAddress1(String address1) {
-        this.user.setAddress1(address1);
+        this.userEntity.setAddress1(address1);
     }
 
 
@@ -199,7 +208,7 @@ public class User {
      * @return the address2
      */
     public String getAddress2() {
-        return this.user.getAddress2();
+        return this.userEntity.getAddress2();
     }
 
 
@@ -207,7 +216,7 @@ public class User {
      * @param address2 the address2 to set
      */
     public void setAddress2(String address2) {
-        this.user.setAddress2(address2);
+        this.userEntity.setAddress2(address2);
     }
 
 
@@ -215,7 +224,7 @@ public class User {
      * @return the state
      */
     public String getState() {
-        return this.user.getState();
+        return this.userEntity.getState();
     }
 
 
@@ -223,7 +232,7 @@ public class User {
      * @param state the state to set
      */
     public void setState(String state) {
-        this.user.setState(state);
+        this.userEntity.setState(state);
     }
 
 
@@ -231,7 +240,7 @@ public class User {
      * @return the city
      */
     public String getCity() {
-        return this.user.getCity();
+        return this.userEntity.getCity();
     }
 
 
@@ -239,7 +248,7 @@ public class User {
      * @param city the city to set
      */
     public void setCity(String city) {
-        this.user.setCity(city);
+        this.userEntity.setCity(city);
     }
 
 
@@ -247,7 +256,7 @@ public class User {
      * @return the pincode
      */
     public String getPincode() {
-        return this.user.getPincode();
+        return this.userEntity.getPincode();
     }
 
 
@@ -255,7 +264,7 @@ public class User {
      * @param pincode the pincode to set
      */
     public void setPincode(String pincode) {
-        this.user.setPincode(pincode);
+        this.userEntity.setPincode(pincode);
     }
 
 
@@ -263,7 +272,7 @@ public class User {
      * @return the landmark
      */
     public String getLandmark() {
-        return this.user.getLandmark();
+        return this.userEntity.getLandmark();
     }
 
 
@@ -271,14 +280,14 @@ public class User {
      * @param landmark the landmark to set
      */
     public void setLandmark(String landmark) {
-        this.user.setLastName(landmark);
+        this.userEntity.setLastName(landmark);
     }
 
 
     @Override
     public String toString() {
         return "User{" +
-                "user=" + user +
+                "user=" + userEntity +
                 '}';
     }
 }

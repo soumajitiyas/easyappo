@@ -1,10 +1,13 @@
 package com.easyapp.domain;
 
+import com.easyapp.dto.NotificationResult;
+import com.easyapp.service.exception.EasyAppoBusinessException;
 import com.easyapp.service.exception.EasyAppoServiceException;
 
-public class Otp {
+@Domain
+public class Otp implements Message {
 
-    public void send(User user) throws EasyAppoServiceException {
-
+    public NotificationResult send(User user) throws EasyAppoBusinessException {
+        return null;
     }
 }
